@@ -9,7 +9,6 @@
   */
 
 #include "main.h"
-#include "stm32f0xx_nucleo.h"
 #include "led_driver.h"
 #include "button_driver.h"
 

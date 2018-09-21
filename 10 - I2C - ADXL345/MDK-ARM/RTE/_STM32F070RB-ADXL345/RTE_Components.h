@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'Project' 
- * Target:  'STM32F070RB-GPIOExample' 
+ * Target:  'STM32F070RB-ADXL345' 
  */
 
 #ifndef RTE_COMPONENTS_H

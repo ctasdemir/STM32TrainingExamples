@@ -395,13 +395,11 @@ ARM Macro Assembler    Page 7
 
 
 ork --depend=stm32f070rb-nucleo\startup_stm32f070xb.d -ostm32f070rb-nucleo\star
-tup_stm32f070xb.o -I"D:\Dropbox\Eðitimler\Eðitim Ýçerikleri\C ile Gömülü sistem
- programlama Eðitimi\CileGomuluSistemEgitimi\Proje4 - LED - Button - Toggle Swi
-tch\MDK-ARM\RTE" -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include -IC
-:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include --predefine="__MICRO
-LIB SETA 1" --predefine="__UVISION_VERSION SETA 521" --predefine="_RTE_ SETA 1"
- --predefine="STM32F070xB SETA 1" --list=startup_stm32f070xb.lst startup_stm32f
-070xb.s
+tup_stm32f070xb.o -I.\RTE\_STM32F070RB-GPIOExample -IC:\Keil\ARM\PACK\Keil\STM3
+2F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include -IC:\Keil\ARM\CMSIS\I
+nclude --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine=
+"__UVISION_VERSION SETA 526" --predefine="STM32F070xB SETA 1" --predefine="STM3
+2F070xB SETA 1" --list=startup_stm32f070xb.lst startup_stm32f070xb.s
 
 
 

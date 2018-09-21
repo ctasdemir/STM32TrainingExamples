@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @file    I2C/I2C_TwoBoards_ComPolling/Src/stm32f0xx_hal_msp.c
-  * @author  MCD Application Team
+  * @file    /Src/stm32f0xx_hal_msp.c
+  * @author  
   * @brief   HAL MSP module.
   ******************************************************************************
  
@@ -9,9 +9,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
-
-
 
 /**
   * @brief I2C MSP Initialization 
@@ -38,6 +35,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
   /* Enable GPIO TX/RX clock */
   I2Cx_SCL_GPIO_CLK_ENABLE();
   I2Cx_SDA_GPIO_CLK_ENABLE();
+	
   /* Enable I2Cx clock */
   I2Cx_CLK_ENABLE(); 
 

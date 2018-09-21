@@ -1,10 +1,9 @@
-#include "button_driver.h"
-#include "uart_driver.h"
 #include "stm32f0xx_hal.h"
-
+#include "uart_buffer.h"
 
 
 UART_HandleTypeDef UartHandle;
+
 static void UART_Error_Handler(void);
 
 
@@ -41,7 +40,6 @@ GPIO_InitTypeDef  GPIO_InitStruct;
     
   /* UART RX GPIO pin configuration  */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
-  GPIO_InitStruct.Alternate = GPIO_AF1_USART2;
     
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
     
@@ -103,16 +101,6 @@ static void UART_Error_Handler(void)
 }
 
 
-void send_time_string()
-{
-
-	uint32_t n = 0;
-	static uint32_t zaman;
-	zaman++;
-	
-	n = UART_bytes_to_read();
-	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
-}
 
 
 /**

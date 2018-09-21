@@ -5,7 +5,7 @@
 
 
 void adc_driver_init(void);
-int32_t adc_get_convertion_value(void);
+int32_t adc_get_result(void);
 
 
 #endif

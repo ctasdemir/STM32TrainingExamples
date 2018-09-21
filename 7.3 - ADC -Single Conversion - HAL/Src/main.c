@@ -8,7 +8,7 @@
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
-void send_adc_string();
+void send_adc_string(void);
 
 
 
@@ -29,8 +29,7 @@ int main(void)
   button_init();
 	adc_driver_init();
 
-	
-  /* Infinite loop */
+	/* Infinite loop */
   while (1)
   {
 			user_led_toggle();
@@ -39,13 +38,12 @@ int main(void)
   }
 }
 
-void send_adc_string()
+void send_adc_string(void)
 {
-
 	uint32_t adc = 0;
 	static uint32_t time;
 	time++;
-	adc = adc_get_convertion_value();
+	adc = adc_get_result();
 	
 	printf("zaman:%d ADC Verisi:%d Buton Durum:%s\n\r",time,adc,button_get_state()?"OFF":"ON");
 }

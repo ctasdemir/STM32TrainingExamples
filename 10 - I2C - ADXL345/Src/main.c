@@ -1,21 +1,18 @@
 #include "main.h"
 #include "adxl345.h"
+#include "uart_driver.h"
 
 
 
 void SystemClock_Config(void);
-static uint16_t Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferLength);
 static void Error_Handler(void);
 
 float x,y,z;
+int16_t raw_x,raw_y, raw_z;
+char string[50];
+uint32_t size = 0;
 
 
-
-/**
-  * @brief  Main program
-  * @param  None
-  * @retval None
-  */
 int main(void)
 {
   /* STM32F0xx HAL library initialization:
@@ -30,17 +27,23 @@ int main(void)
   HAL_Init();
 
   /* Configure the system clock to 48 MHz */
-  SystemClock_Config();
-
-  /* Configure LED2 */
-  BSP_LED_Init(LED2);
+  SystemClock_Config();  
+	
+	UART_Init();
 	
 	adxl345_init();
   
   /* Infinite loop */
   while (1)
   {
-
+   adxl345_get_g_values(&x,&y,&z);
+	 adxl345_get_raw_values(&raw_x,&raw_y,&raw_z);
+		//size = sprintf(string,"X:%f Y:%f Z:%f\n",x,y,z);
+		size = sprintf(string,"%d %d %d\n",raw_x,raw_y,raw_z);
+   UART_send_string(string,size);
+		size = sprintf(string,"%f %f %f\n",x,y,z);
+   UART_send_string(string,size);
+		HAL_Delay(500);
   }
 }
 
@@ -113,11 +116,10 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *I2cHandle)
   */
 static void Error_Handler(void)
 {
-  /* Error if LED2 is slowly blinking (1 sec. period) */
+  
   while(1)
   {    
-    BSP_LED_Toggle(LED2); 
-    HAL_Delay(1000);
+  
   } 
 }
 

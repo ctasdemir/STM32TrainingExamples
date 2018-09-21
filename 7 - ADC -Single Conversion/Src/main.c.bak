@@ -12,11 +12,13 @@
 #include "UART_driver.h"
 #include "led_driver.h"
 #include "button_driver.h"
-
+#include "adc_driver.h"
 
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
+
+void send_adc_string();
 
 
 
@@ -32,27 +34,40 @@ int main(void)
   /* Configure the system clock to have a system clock = 48 Mhz */
   SystemClock_Config();
 
-	UART_Init();
-
-	
+	UART_Init();	
 	user_led_init();
-  button_init();
+  //button_init();
+	adc_driver_init();
+	
+	adc_start_calibration();
 	
   /* Infinite loop */
   while (1)
   {
 		if(button_get_state() == 0){
 			user_led_toggle();
-			send_time_string();
+			send_adc_string();
 			HAL_Delay(1000);			
 		}
 		else{
 			user_led_toggle();
-			send_time_string();
+			send_adc_string();
 			HAL_Delay(100);
 		}
   }
 }
+
+void send_adc_string()
+{
+
+	uint32_t n = 0;
+	static uint32_t zaman;
+	zaman++;
+	n = adc_start_conversion();
+	
+	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
+}
+
 
 /**
   * @brief  System Clock Configuration
