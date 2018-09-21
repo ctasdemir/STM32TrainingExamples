@@ -8,8 +8,6 @@
   ******************************************************************************
   */
 
-#include "main.h"
-#include "stm32f0xx_nucleo.h"
 #include "led_driver.h"
 #include "button_driver.h"
 #include "lcd_driver.h"
@@ -26,7 +24,6 @@ static void Error_Handler(void);
   */
 int main(void)
 {
-	int32_t led_state = 0;
 	int32_t sayac = 0;
 	char dizi[10];
 	/* STM32F0xx HAL library initialization:
@@ -55,7 +52,7 @@ int main(void)
 		sayac++;
 		HAL_Delay(1000);
 		
-		sprintf(dizi,"LCD KULLANIMI",sayac);
+		sprintf(dizi,"LCD KULLANIMI");
 		lcd_put_string(0,0,dizi);
 		sprintf(dizi,"Sayac: %d",sayac);
 		lcd_put_string(0,1,dizi);

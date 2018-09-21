@@ -20,7 +20,7 @@
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 
-void send_adc_string();
+void send_adc_string(void);
 
 
 
@@ -59,7 +59,7 @@ int main(void)
   }
 }
 
-void send_adc_string()
+void send_adc_string(void)
 {
 
 	uint32_t n = 0;

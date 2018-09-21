@@ -42,8 +42,6 @@ int main(void)
      */
   HAL_Init();
 
-  /* Configure LED2 */
-  BSP_LED_Init(LED2);
 
   /* Configure the system clock to 48 MHz */
   SystemClock_Config();
@@ -114,7 +112,7 @@ int main(void)
   */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  BSP_LED_Toggle(LED2);
+ // BSP_LED_Toggle(LED2);
 }
 
 /**
@@ -167,8 +165,7 @@ void SystemClock_Config(void)
   */
 static void Error_Handler(void)
 {
-  /* Turn LED2 on */
-  BSP_LED_On(LED2);
+
   while (1)
   {
   }

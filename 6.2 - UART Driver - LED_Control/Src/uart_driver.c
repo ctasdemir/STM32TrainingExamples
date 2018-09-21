@@ -1,6 +1,5 @@
 #include "UART_Driver.h"
 #include "stm32f0xx_hal.h"
-#include "main.h"
 #include "button_driver.h"
 
 UART_HandleTypeDef UartHandle;

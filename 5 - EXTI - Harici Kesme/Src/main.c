@@ -7,7 +7,8 @@
   * @brief   Main program body
   ******************************************************************************/
 
-#include "main.h"
+#include "stm32f070xb.h"
+#include "stm32f0xx_hal.h"
 #include "led_driver.h"
 #include "button_driver.h"
 

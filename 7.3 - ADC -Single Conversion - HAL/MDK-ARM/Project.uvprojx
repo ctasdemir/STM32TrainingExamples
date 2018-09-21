@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>STM32F070RB-Nucleo</TargetName>
+      <TargetName>STM32F070RB-ADC</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
