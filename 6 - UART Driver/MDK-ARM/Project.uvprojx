@@ -338,7 +338,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>STM32F070xB,USE_HAL_DRIVER,USE_STM32F0XX_NUCLEO</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../../Drivers/STM32F0xx_HAL_Driver/Inc</IncludePath>
+              <IncludePath>../Inc;../../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../../Drivers/STM32F0xx_HAL_Driver/Inc;../../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -499,23 +499,13 @@
             </File>
           </Files>
         </Group>
-        <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
       </Groups>
     </Target>
   </Targets>
 
   <RTE>
     <apis/>
-    <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.0.1" condition="ARMv6_7_8-M Device">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.0.1"/>
-        <targetInfos>
-          <targetInfo name="STM32F070RB-Nucleo"/>
-        </targetInfos>
-      </component>
-    </components>
+    <components/>
     <files/>
   </RTE>
 
