@@ -515,13 +515,8 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Drivers/Timer</GroupName>
+          <GroupName>Drivers/PWM</GroupName>
           <Files>
-            <File>
-              <FileName>timer_driver.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\timer_driver.c</FilePath>
-            </File>
             <File>
               <FileName>pwm_driver.c</FileName>
               <FileType>1</FileType>

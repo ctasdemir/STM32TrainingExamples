@@ -102,8 +102,3 @@ static void Error_Handler(void)
   }
 }
 
-
-
-
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

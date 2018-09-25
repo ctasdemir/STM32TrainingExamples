@@ -1,9 +1,9 @@
 /**
   ******************************************************************************
   * @file    Templates/Src/main.c 
-  * @author  MCD Application Team
-  * @version V1.7.0
-  * @date    04-November-2016
+  * @author  C.T
+  * @version 
+  * @date    
   * @brief   Main program body
   ******************************************************************************/
 
@@ -19,7 +19,7 @@
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 
-void send_adc_string();
+void send_adc_string(void);
 
 void pwm_sweep(void);
 
@@ -38,12 +38,11 @@ int main(void)
 
 	UART_Init();	
 	user_led_init();
-  button_init();
-	timer14_init();
+  button_init();	
 	adc_driver_init();	
 	adc_start_calibration();
 	pwm_init();
-	timer14_enable();
+
   /* Infinite loop */
   while (1)
   {
@@ -70,24 +69,26 @@ int main(void)
 }
 
 
-void pwm_sweep()
+void pwm_sweep(void)
 {
 	static int32_t sweep =0 ;
 	
 	for(sweep = 0; sweep <2000; sweep++)
 	{
 		pwm_set_duty_cycle(sweep,1);
+		pwm_set_duty_cycle(sweep,2);
 		HAL_Delay(1);
 	}
 	
 	for(sweep = 2000; sweep >=0; sweep--)
 	{
 		pwm_set_duty_cycle(sweep,1);
+		pwm_set_duty_cycle(sweep,2);
 		HAL_Delay(1);
 	}
 }
 
-void send_adc_string()
+void send_adc_string(void)
 {
 
 	uint32_t n = 0;

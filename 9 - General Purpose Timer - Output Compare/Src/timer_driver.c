@@ -3,10 +3,6 @@
 #include "timer_driver.h"
 
 
-#define __CHECK_FLAG(__HANDLE__, __FLAG__)                               \
-  (((__HANDLE__) & (__FLAG__)) == (__FLAG__))
-
-
 void timer14_init(void)
 {
 	GPIO_InitTypeDef  GPIO_InitStruct;
@@ -20,9 +16,6 @@ void timer14_init(void)
   GPIO_InitStruct.Alternate = GPIO_AF4_TIM14;
   
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-    
-  
-	
 	
 	TIM14->PSC  = 48000 - 1; // Timer clock = 48 mhz / 48000 = 1000 Hz (1 ms period)
 	
@@ -37,19 +30,9 @@ void timer14_init(void)
 	
 	// Enable OC1REF OUTPUT
 	TIM14->CCER |= TIM_CCER_CC1E;
-
 	
-	TIM14->ARR = 100; 
-	TIM14->CCR1 = 50; 
-	
-	
-}
-
-uint16_t timer6_get_counter_value(void)
-{
-	uint16_t cnt = TIM6->CNT;
-	
-	return cnt;
+	TIM14->ARR = 500; 
+	TIM14->CCR1 = 500; 
 }
 
 void timer14_enable(void)
@@ -62,18 +45,10 @@ void timer14_disable(void)
 	TIM14->CR1 &= ~(TIM_CR1_CEN);	
 }
 
-/*
-void timer6_printf_cnt_value(void)
+void timer14_capture_set_period(uint32_t ms)
 {
-		printf("TIMER=%d\n\r",timer6_get_counter_value());
+	timer14_disable();
+	TIM14->ARR = ms; 
+	TIM14->CCR1 = ms; 
+	timer14_enable();
 }
-*/
-/*
-void TIM6_IRQHandler(void)
-{
-	TIM6->SR &=~(TIM_SR_UIF);
-	
-	GPIOA->ODR ^= GPIO_PIN_5;
-}
-
-*/

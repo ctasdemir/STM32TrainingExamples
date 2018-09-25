@@ -9,6 +9,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "led_driver.h"
 
 
 /* TIM handle declaration */
@@ -99,6 +100,8 @@ int main(void)
     /* Starting Error */
     Error_Handler();
   }
+	
+	user_led_init();
 
   while (1)
   {
@@ -112,7 +115,7 @@ int main(void)
   */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
- // BSP_LED_Toggle(LED2);
+ user_led_toggle();
 }
 
 /**
@@ -172,26 +175,6 @@ static void Error_Handler(void)
 }
 
 
-#ifdef  USE_FULL_ASSERT
 
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
-void assert_failed(char *file, uint32_t line)
-{
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
-  /* Infinite loop */
-  while (1)
-  {
-  }
-}
-
-#endif
 
 

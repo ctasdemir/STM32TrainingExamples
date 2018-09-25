@@ -41,11 +41,13 @@ int main(void)
 void send_adc_string(void)
 {
 	uint32_t adc = 0;
+	float voltage = 0.0;
 	static uint32_t time;
 	time++;
 	adc = adc_get_result();
+	voltage = (adc / 4095.0) * 3.3;
 	
-	printf("zaman:%d ADC Verisi:%d Buton Durum:%s\n\r",time,adc,button_get_state()?"OFF":"ON");
+	printf("zaman:%d ADC Verisi:%d %2.2f V Buton Durum:%s\n\r",time,adc,voltage,button_get_state()?"OFF":"ON");
 }
 
 

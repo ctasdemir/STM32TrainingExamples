@@ -457,6 +457,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\main.c</FilePath>
             </File>
+            <File>
+              <FileName>led_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\led_driver.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -9,6 +9,6 @@ void timer14_init(void);
 void timer14_enable(void);
 void timer14_disable(void);
 
-void timer14_set_period(uint32_t period);
+void timer14_capture_set_period(uint32_t ms);
 
 #endif

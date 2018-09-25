@@ -35,14 +35,9 @@ int main(void)
   /* Configure the system clock to have a system clock = 48 Mhz */
   SystemClock_Config();
 
-	UART_Init();	
-	user_led_init();
-  button_init();
-	timer14_init();
-	adc_driver_init();	
-	adc_start_calibration();
+	UART_Init();			
 	pwm_init();
-	timer14_enable();
+	
   /* Infinite loop */
   while (1)
   {

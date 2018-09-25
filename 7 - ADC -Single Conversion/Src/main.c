@@ -38,7 +38,7 @@ int main(void)
 
 	UART_Init();	
 	user_led_init();
-  //button_init();
+  button_init();
 	adc_driver_init();
 	
 	adc_start_calibration();
@@ -46,16 +46,9 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-		if(button_get_state() == 0){
 			user_led_toggle();
 			send_adc_string();
-			HAL_Delay(1000);			
-		}
-		else{
-			user_led_toggle();
-			send_adc_string();
-			HAL_Delay(100);
-		}
+			HAL_Delay(500);			
   }
 }
 
@@ -63,11 +56,13 @@ void send_adc_string(void)
 {
 
 	uint32_t n = 0;
+	float voltage = 0.0;
 	static uint32_t zaman;
 	zaman++;
-	n = adc_start_conversion();
-	
-	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
+	n = adc_get_result();
+	voltage = (n / 4095.0) * 3.3;
+		
+	printf("zaman:%d ADC:%d %2.2f V Buton Durum:%d\n\r",zaman,n,voltage,button_get_state());
 }
 
 

@@ -38,12 +38,14 @@ int main(void)
   {
    adxl345_get_g_values(&x,&y,&z);
 	 adxl345_get_raw_values(&raw_x,&raw_y,&raw_z);
-		//size = sprintf(string,"X:%f Y:%f Z:%f\n",x,y,z);
-		size = sprintf(string,"%d %d %d\n",raw_x,raw_y,raw_z);
+	 //size = sprintf(string,"X:%f Y:%f Z:%f\n",x,y,z);
+   /*
+	 size = sprintf(string,"%d %d %d\n",raw_x,raw_y,raw_z);
    UART_send_string(string,size);
+	 */
 		size = sprintf(string,"%f %f %f\n",x,y,z);
-   UART_send_string(string,size);
-		HAL_Delay(500);
+    UART_send_string(string,size);
+		HAL_Delay(100);
   }
 }
 

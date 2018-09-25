@@ -34,13 +34,11 @@ void button_init()
 	// EXTI13 Interrupt falling edge
 	EXTI->FTSR |= EXTI_FTSR_TR13;
 	
-// set EXTI4_14 Priority on NVIC
-NVIC_SetPriority(EXTI4_15_IRQn,1);
+	// set EXTI4_14 Priority on NVIC
+	NVIC_SetPriority(EXTI4_15_IRQn,1);
 
-// Enable EXTI4_15 Interrupt on NVIC
-NVIC_EnableIRQ(EXTI4_15_IRQn);
-
-	
+	// Enable EXTI4_15 Interrupt on NVIC
+	NVIC_EnableIRQ(EXTI4_15_IRQn);	
 }
 
 int32_t button_get_state(void)

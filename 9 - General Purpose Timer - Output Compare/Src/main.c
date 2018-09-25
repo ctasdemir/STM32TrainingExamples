@@ -1,10 +1,13 @@
 /**
   ******************************************************************************
-  * @file    Templates/Src/main.c 
-  * @author  MCD Application Team
+  * @file    main.c 
+  * @author  C.T
   * @version V1.7.0
   * @date    04-November-2016
   * @brief   Main program body
+	* 
+	* Timer Compare Mode Example
+	* Toggles TIM14- CH3 pin PA7
   ******************************************************************************/
 
 /* Includes ------------------------------------------------------------------*/
@@ -35,19 +38,20 @@ int main(void)
   SystemClock_Config();
 
 	UART_Init();	
-	user_led_init();
-  button_init();
+	  
 	timer14_init();
-	adc_driver_init();	
-	adc_start_calibration();
+	
 	timer14_enable();
-  /* Infinite loop */
+  
+	/* Infinite loop */
   while (1)
   {
- 
-	 //	user_led_toggle();
-			//timer6_printf_cnt_value();
-			HAL_Delay(1000);			
+		timer14_capture_set_period(100);
+		HAL_Delay(5000);
+		timer14_capture_set_period(500);
+		HAL_Delay(5000);
+		timer14_capture_set_period(1000);
+		HAL_Delay(5000);
   }
 }
 

@@ -16,7 +16,7 @@ void pwm_init(void)
 	__HAL_RCC_GPIOC_CLK_ENABLE();
 	
 	
-	// PB4 - TIMER3 - CH1
+	// PB4 - TIMER3 - CH1 - D5
 	GPIO_InitStruct.Pin       = GPIO_PIN_4;
   GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull      = GPIO_NOPULL;
@@ -26,7 +26,7 @@ void pwm_init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 	
 	
-	// PC7 - TIMER3 - CH2
+	// PC7 - TIMER3 - CH2 - D9
 	GPIO_InitStruct.Pin       = GPIO_PIN_7;
 	GPIO_InitStruct.Alternate = GPIO_AF0_TIM3;
 	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -34,7 +34,7 @@ void pwm_init(void)
 	
 	
 	TIM3->PSC  = 47; // Timer clock = 48 mhz / 48 = 1 MHz 
-	TIM3->ARR  = 9;  // period 10 us
+	TIM3->ARR  = 9;  // period 10 us ==> 100 KHz
 	TIM3->CCR1 = 1;  // duty 4 us
 	TIM3->CCR2 = 2;  // duty 4 us
 	
@@ -68,7 +68,7 @@ void pwm_enable(void)
 
 void pwm_disable(void)
 {
-	TIM15->CR1 &= ~(TIM_CR1_CEN);	
+	TIM3->CR1 &= ~(TIM_CR1_CEN);	
 }
 
 

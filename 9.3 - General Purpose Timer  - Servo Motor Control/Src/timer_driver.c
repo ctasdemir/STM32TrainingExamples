@@ -3,9 +3,6 @@
 #include "timer_driver.h"
 
 
-#define __CHECK_FLAG(__HANDLE__, __FLAG__)                               \
-  (((__HANDLE__) & (__FLAG__)) == (__FLAG__))
-
 
 void timer14_init(void)
 {
@@ -45,16 +42,7 @@ void timer14_init(void)
 	
 	
 	TIM14->ARR = 199; 
-	TIM14->CCR1 = 199; 
-	
-	
-}
-
-uint16_t timer6_get_counter_value(void)
-{
-	uint16_t cnt = TIM6->CNT;
-	
-	return cnt;
+	TIM14->CCR1 = 199; 	
 }
 
 void timer14_enable(void)
@@ -67,18 +55,5 @@ void timer14_disable(void)
 	TIM14->CR1 &= ~(TIM_CR1_CEN);	
 }
 
-/*
-void timer6_printf_cnt_value(void)
-{
-		printf("TIMER=%d\n\r",timer6_get_counter_value());
-}
-*/
-/*
-void TIM6_IRQHandler(void)
-{
-	TIM6->SR &=~(TIM_SR_UIF);
-	
-	GPIOA->ODR ^= GPIO_PIN_5;
-}
 
-*/
+

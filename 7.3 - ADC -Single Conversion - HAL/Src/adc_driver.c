@@ -86,13 +86,8 @@ int32_t adc_get_result(void)
 	}
 	else
 	{
-		result = -1;
+		return -1; // error
 	}
 	
-	
-	return result;			
-	
+	return result;				
 }
-
-
-

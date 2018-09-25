@@ -59,7 +59,7 @@ void send_adc_string(void)
 	zaman++;
 	n = adc_start_conversion();
 	
-	//printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
+	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
 }
 
 

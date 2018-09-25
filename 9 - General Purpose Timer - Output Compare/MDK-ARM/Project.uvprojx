@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>STM32F070RB-Nucleo</TargetName>
+      <TargetName>STM32F070RB-Compare</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
@@ -390,7 +390,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Example/User</GroupName>
+          <GroupName>Compare/User</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>
@@ -405,7 +405,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Example/MDK-ARM</GroupName>
+          <GroupName>Compare/MDK-ARM</GroupName>
           <Files>
             <File>
               <FileName>startup_stm32f070xb.s</FileName>

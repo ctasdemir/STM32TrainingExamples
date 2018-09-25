@@ -3,9 +3,6 @@
 #include "timer_driver.h"
 
 
-#define __CHECK_FLAG(__HANDLE__, __FLAG__)                               \
-  (((__HANDLE__) & (__FLAG__)) == (__FLAG__))
-
 
 void timer6_init(void)
 {	
@@ -16,7 +13,7 @@ void timer6_init(void)
 	TIM6->PSC = 48000 - 1; 
 	
 	// Reload in every 100 ms
-	TIM6->ARR = 100; // Reload in every 100 ms
+	TIM6->ARR = 99; // Reload in every 100 ms
 	
 	// Enable Timer Update Interrupt
 	TIM6->DIER |= TIM_DIER_UIE;
@@ -26,9 +23,10 @@ void timer6_init(void)
 	NVIC_SetPriority(TIM6_IRQn,2);
 }
 
+// Set period (ms)
 void timer6_set_period(uint16_t period)
 {
-	TIM6->ARR = period;
+	TIM6->ARR = period-1;
 }
 
 uint16_t timer6_get_counter_value(void)
@@ -53,6 +51,7 @@ void timer6_printf_cnt_value(void)
 		printf("TIMER=%d\n\r",timer6_get_counter_value());
 }
 
+// Timer6 Interrupt Request Handler
 void TIM6_IRQHandler(void)
 {
 	TIM6->SR &=~(TIM_SR_UIF);
