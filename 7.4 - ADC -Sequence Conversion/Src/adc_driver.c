@@ -124,8 +124,7 @@ void ADC1_IRQHandler()
   
 	if( (ADC1->ISR & ADC_ISR_EOS) !=0 )
 	{
-		adc_index = 0;		
-	
+		adc_index = 0;	
 	}
 	
 	//ADC1->ISR |= ADC_ISR_EOS;

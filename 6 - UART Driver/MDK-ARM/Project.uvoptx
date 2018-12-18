@@ -152,18 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>148</LineNumber>
+          <LineNumber>153</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220976</Address>
+          <Address>134221060</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\EÄŸitim iÅŸi\EÄŸitim Ä°Ã§erikleri\STM32_Egitim_Ornekleri\STM32F070_Nucleo\Proje5 - UART Driver\Src\uart_driver.c</Filename>
+          <Filename>..\Src\uart_driver.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32F070RB_Nucleo\../Src/uart_driver.c\148</Expression>
+          <Expression>\\STM32F070RB_Nucleo\../Src/uart_driver.c\153</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -176,6 +176,16 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>UART_BufferRX</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RDR</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rx_data</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -432,7 +442,7 @@
 
   <Group>
     <GroupName>Drivers/UART</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -440,7 +450,7 @@
       <GroupNumber>5</GroupNumber>
       <FileNumber>15</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Src\uart_buffer.c</PathWithFileName>
@@ -464,7 +474,7 @@
 
   <Group>
     <GroupName>Drivers/Button_Led</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

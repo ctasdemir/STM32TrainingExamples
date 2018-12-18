@@ -39,8 +39,7 @@ int main(void)
 	UART_Init();	
 	user_led_init();
   button_init();
-	adc_driver_init();
-	
+	adc_driver_init();	
 	adc_start_calibration();
 	
   /* Infinite loop */

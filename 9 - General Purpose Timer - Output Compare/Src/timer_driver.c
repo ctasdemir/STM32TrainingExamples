@@ -31,8 +31,7 @@ void timer14_init(void)
 	// Enable OC1REF OUTPUT
 	TIM14->CCER |= TIM_CCER_CC1E;
 	
-	TIM14->ARR = 500; 
-	TIM14->CCR1 = 500; 
+
 }
 
 void timer14_enable(void)

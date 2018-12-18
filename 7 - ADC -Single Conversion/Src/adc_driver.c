@@ -44,9 +44,6 @@ void adc_driver_init(void)
 	
 	// Enable VREF
 	ADC->CCR |= ADC_CCR_VREFEN; 
-	
-	// Enable ADC	
-	//	ADC1->CR |= ADC_CR_ADEN;
 }
 
 int32_t adc_get_result(void)

@@ -34,9 +34,9 @@ void pwm_init(void)
 	
 	
 	TIM3->PSC  = 47; // Timer clock = 48 mhz / 48 = 1000000 Hz - 1 MHz ( 1 us) 
-	TIM3->ARR  = 19999;  // period 20 ms
+	TIM3->ARR  = 20000;  // period 20 ms
 	TIM3->CCR1 = 1000;  // duty 
-	TIM3->CCR2 = 2000;  // duty 
+	TIM3->CCR2 = 1000;  // duty 
 	
 	
 	// CH-1 PWM MODE 
@@ -53,9 +53,8 @@ void pwm_init(void)
 	TIM3->CCER |= TIM_CCER_CC1E;
 	TIM3->CCER |= TIM_CCER_CC2E;	
   
-	TIM3->BDTR |= TIM_BDTR_MOE;
-	TIM3->CR1 |= TIM_CR1_CEN;
-	TIM3->EGR |= TIM_EGR_UG; 	
+	// Enable Timer
+	TIM3->CR1 |= TIM_CR1_CEN;	
 }
 
 

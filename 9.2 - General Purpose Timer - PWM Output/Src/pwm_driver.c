@@ -34,9 +34,9 @@ void pwm_init(void)
 	
 	
 	TIM3->PSC  = 47; // Timer clock = 48 mhz / 48 = 1 MHz 
-	TIM3->ARR  = 9;  // period 10 us ==> 100 KHz
-	TIM3->CCR1 = 1;  // duty 4 us
-	TIM3->CCR2 = 2;  // duty 4 us
+	TIM3->ARR  = 10;  // period 10 us ==> 100 KHz
+	TIM3->CCR1 = 1; 
+	TIM3->CCR2 = 2;  
 	
 	
 	// CH-1 PWM MODE 

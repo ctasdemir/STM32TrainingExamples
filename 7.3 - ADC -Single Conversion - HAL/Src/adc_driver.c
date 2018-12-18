@@ -30,7 +30,8 @@ void adc_driver_init(void)
 	
 	
 	AdcHandle.Instance          = ADC1;
-  if (HAL_ADC_DeInit(&AdcHandle) != HAL_OK)
+  
+	if (HAL_ADC_DeInit(&AdcHandle) != HAL_OK)
   {
     /* ADC de-initialization Error */
    // Error_Handler();
@@ -47,7 +48,7 @@ void adc_driver_init(void)
   AdcHandle.Init.DiscontinuousConvMode = DISABLE;                       /* Parameter discarded because sequencer is disabled */
   AdcHandle.Init.ExternalTrigConv      = ADC_SOFTWARE_START;            /* Software start to trig the 1st conversion manually, without external event */
   AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE; /* Parameter discarded because software trigger chosen */
-  AdcHandle.Init.DMAContinuousRequests = DISABLE;                        /* ADC DMA continuous request to match with DMA circular mode */
+  AdcHandle.Init.DMAContinuousRequests = DISABLE;                       /* ADC DMA continuous request to match with DMA circular mode */
   AdcHandle.Init.Overrun               = ADC_OVR_DATA_OVERWRITTEN;      /* DR register is overwritten with the last conversion result in case of overrun */
   AdcHandle.Init.SamplingTimeCommon    = ADC_SAMPLETIME_71CYCLES_5;
 
@@ -86,7 +87,7 @@ int32_t adc_get_result(void)
 	}
 	else
 	{
-		return -1; // error
+		return HAL_ERROR; // error
 	}
 	
 	return result;				

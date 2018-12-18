@@ -43,11 +43,7 @@ int32_t adxl345_init()
     //Error_Handler();
   }
 
-  /* Enable the Analog I2C Filter */
-  HAL_I2CEx_ConfigAnalogFilter(&I2cHandle,I2C_ANALOGFILTER_ENABLE);
-
-	
-  ret = HAL_I2C_Mem_Read(&I2cHandle,ADXL345_ADDRESS,0,1,i2c_buffer,1,2000);
+  ret = HAL_I2C_Mem_Read(&I2cHandle,ADXL345_ADDRESS,ADXL345_DEVID,1,i2c_buffer,1,2000);
 	
 	if(ret == HAL_ERROR)
 	{

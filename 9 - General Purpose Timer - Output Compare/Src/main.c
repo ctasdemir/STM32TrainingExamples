@@ -42,16 +42,14 @@ int main(void)
 	timer14_init();
 	
 	timer14_enable();
+	
+	timer14_capture_set_period(100);
+
   
 	/* Infinite loop */
   while (1)
   {
-		timer14_capture_set_period(100);
-		HAL_Delay(5000);
-		timer14_capture_set_period(500);
-		HAL_Delay(5000);
-		timer14_capture_set_period(1000);
-		HAL_Delay(5000);
+		
   }
 }
 
@@ -88,13 +86,14 @@ static void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct;
   
   /* No HSE Oscillator on Nucleo, Activate PLL with HSI as source */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState          = RCC_HSI_ON;
+  RCC_OscInitStruct.OscillatorType       = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState             = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue  = RCC_HSICALIBRATION_DEFAULT;  
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
+  RCC_OscInitStruct.PLL.PLLState         = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource        = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PREDIV           = RCC_PREDIV_DIV1;
+  RCC_OscInitStruct.PLL.PLLMUL           = RCC_PLL_MUL6;
+	
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
   {
     Error_Handler();
@@ -105,6 +104,7 @@ static void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+	
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1)!= HAL_OK)
   {
     Error_Handler();

@@ -42,7 +42,8 @@ int main(void)
   while (1)
   {
 			pwm_set_duty_cycle(1,1);
-			pwm_set_duty_cycle(10,2);
+	/*	
+  		pwm_set_duty_cycle(10,2);
 			HAL_Delay(200);			
 			
 			pwm_set_duty_cycle(5,1);
@@ -55,7 +56,8 @@ int main(void)
 		
 			pwm_set_duty_cycle(10,1);
 			pwm_set_duty_cycle(2,2);
-			HAL_Delay(200);			
+			HAL_Delay(200);		
+*/		
 			
   }
 }

@@ -13,7 +13,7 @@ void timer6_init(void)
 	TIM6->PSC = 48000 - 1; 
 	
 	// Reload in every 100 ms
-	TIM6->ARR = 99; // Reload in every 100 ms
+	TIM6->ARR = 100; 
 	
 	// Enable Timer Update Interrupt
 	TIM6->DIER |= TIM_DIER_UIE;
