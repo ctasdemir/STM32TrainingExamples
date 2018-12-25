@@ -6,6 +6,11 @@
 #include "adc_driver.h"
 
 
+
+extern ADC_HandleTypeDef       AdcHandle;
+volatile int adc_value;
+volatile int adc_ready;
+
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 void send_adc_string(void);
@@ -28,12 +33,19 @@ int main(void)
 	user_led_init();
   button_init();
 	adc_driver_init();
+	HAL_ADC_Start_IT(&AdcHandle);
 
 	/* Infinite loop */
   while (1)
   {
 			user_led_toggle();
-			send_adc_string();
+		//	send_adc_string();
+		
+		if(adc_ready == 1)
+		{
+			adc_ready = 0;
+			printf("ADC val == %d\r\n", adc_value);
+		}
 			HAL_Delay(100);			
   }
 }
@@ -53,11 +65,11 @@ void send_adc_string(void)
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc1)
 {
-	int adc_value;
- adc_value = HAL_ADC_GetValue(hadc1);
- printf("\n\r ADC val == %d", adc_value);
 
-HAL_ADC_Start_IT(hadc1); // Re-Start ADC1 under Interrupt
+ adc_value = HAL_ADC_GetValue(hadc1);
+ adc_ready = 1;
+
+ HAL_ADC_Start_IT(hadc1); // Re-Start ADC1 under Interrupt
                          // this is necessary because we don'use
                          // the Continuos Conversion Mode
 }

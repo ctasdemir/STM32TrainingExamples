@@ -68,10 +68,13 @@ void adc_driver_init(void)
   /* ### - 3 - Channel configuration ######################################## */
   sConfig.Channel      = ADC_CHANNEL_0;               /* Channel to be converted */
   sConfig.Rank         = ADC_RANK_CHANNEL_NUMBER;
+	
   if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
   {
     //Error_Handler();
   }
+	
+	
  }
 
 int32_t adc_get_result(void)

@@ -142,6 +142,7 @@ static void user_led_config(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 }
+
 /**
   * @brief EXTI line detection callbacks
   * @param GPIO_Pin: Specifies the pins connected EXTI line

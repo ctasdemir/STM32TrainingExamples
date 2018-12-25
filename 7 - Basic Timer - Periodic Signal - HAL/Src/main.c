@@ -69,7 +69,7 @@ int main(void)
   ----------------------------------------------------------------------- */
 
   /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
-  uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
+  uwPrescalerValue = (uint32_t)(SystemCoreClock / 1000) - 1;
 
   /* Set TIMx instance */
   TimHandle.Instance = TIMx;
@@ -80,7 +80,7 @@ int main(void)
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 10000 - 1;
+  TimHandle.Init.Period            = 500;
   TimHandle.Init.Prescaler         = uwPrescalerValue;
   TimHandle.Init.ClockDivision     = 0;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
@@ -95,6 +95,7 @@ int main(void)
 
   /*##-2- Start the TIM Base generation in interrupt mode ####################*/
   /* Start Channel1 */
+	
   if (HAL_TIM_Base_Start_IT(&TimHandle) != HAL_OK)
   {
     /* Starting Error */
@@ -105,6 +106,7 @@ int main(void)
 
   while (1)
   {
+		
   }
 }
 

@@ -44,7 +44,7 @@ void adc_driver_init(void)
   AdcHandle.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;           /* EOC flag picked-up to indicate conversion end */
   AdcHandle.Init.LowPowerAutoPowerOff  = DISABLE;
   AdcHandle.Init.LowPowerAutoWait      = DISABLE;                       /* Auto-delayed conversion feature disabled */
-  AdcHandle.Init.ContinuousConvMode    = ENABLE;                        /* Continuous mode enabled (automatic conversion restart after each conversion) */
+  AdcHandle.Init.ContinuousConvMode    = DISABLE;                        /* Continuous mode enabled (automatic conversion restart after each conversion) */
   AdcHandle.Init.DiscontinuousConvMode = DISABLE;                       /* Parameter discarded because sequencer is disabled */
   AdcHandle.Init.ExternalTrigConv      = ADC_SOFTWARE_START;            /* Software start to trig the 1st conversion manually, without external event */
   AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE; /* Parameter discarded because software trigger chosen */
@@ -72,6 +72,10 @@ void adc_driver_init(void)
   {
     //Error_Handler();
   }
+	
+	    /* ADC1 interrupt Init */
+    HAL_NVIC_SetPriority(ADC1_IRQn, 1, 0);
+    HAL_NVIC_EnableIRQ(ADC1_IRQn);
  }
 
 int32_t adc_get_result(void)
@@ -91,4 +95,19 @@ int32_t adc_get_result(void)
 	}
 	
 	return result;				
+}
+
+
+/**
+  * @brief This function handles ADC interrupt.
+  */
+void ADC1_IRQHandler(void)
+{
+  /* USER CODE BEGIN ADC1_IRQn 0 */
+
+  /* USER CODE END ADC1_IRQn 0 */
+  HAL_ADC_IRQHandler(&AdcHandle);
+  /* USER CODE BEGIN ADC1_IRQn 1 */
+
+  /* USER CODE END ADC1_IRQn 1 */
 }
