@@ -34,7 +34,7 @@ int UART_is_buffer_empty(volatile UART_Buffer_t* buffer)
 */
 }
 
-int 	()
+int UART_read_char()
 {
 	int kar =  0; 
 	

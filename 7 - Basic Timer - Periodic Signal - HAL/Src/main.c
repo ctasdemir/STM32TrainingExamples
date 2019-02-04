@@ -69,11 +69,10 @@ int main(void)
   ----------------------------------------------------------------------- */
 
   /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
-	
   uwPrescalerValue = (uint32_t)(SystemCoreClock / 1000) - 1;
 
   /* Set TIMx instance */
-  
+  TimHandle.Instance = TIMx;
 
   /* Initialize TIMx peripheral as follows:
        + Period = 10000 - 1
@@ -81,8 +80,6 @@ int main(void)
        + ClockDivision = 0
        + Counter direction = Up
   */
-	
-	TimHandle.Instance = TIM3;
   TimHandle.Init.Period            = 500;
   TimHandle.Init.Prescaler         = uwPrescalerValue;
   TimHandle.Init.ClockDivision     = 0;

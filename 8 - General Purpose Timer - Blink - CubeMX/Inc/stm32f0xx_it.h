@@ -1,12 +1,10 @@
 /**
   ******************************************************************************
-  * @file    TIM/TIM_TimeBase/Src/stm32f0xx_hal_msp.c
-  * @author  MCD Application Team
-  * @brief   HAL MSP module.
+  * @file    stm32f0xx_it.h
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
-  * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -33,63 +31,29 @@
   ******************************************************************************
   */
 
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __STM32F0xx_IT_H
+#define __STM32F0xx_IT_H
+
+#ifdef __cplusplus
+ extern "C" {
+#endif 
+
 /* Includes ------------------------------------------------------------------*/
+#include "stm32f0xx_hal.h"
 #include "main.h"
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
 
-/** @addtogroup STM32F0xx_HAL_Examples
-  * @{
-  */
+void SysTick_Handler(void);
+void TIM3_IRQHandler(void);
 
-/** @defgroup HAL_MSP
-  * @brief HAL MSP module.
-  * @{
-  */
-
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
-
-/** @defgroup HAL_MSP_Private_Functions
-  * @{
-  */
-
-
-/**
-  * @brief TIM MSP Initialization
-  *        This function configures the hardware resources used in this example:
-  *           - Peripheral's clock enable
-  *           - Peripheral's GPIO Configuration
-  * @param htim: TIM handle pointer
-  * @retval None
-  */
-void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
-{
-  /*##-1- Enable peripherals and GPIO Clocks #################################*/
-  /* TIMx Peripheral clock enable */
-  TIMx_CLK_ENABLE();
-  
-  /*##-2- Configure the NVIC for TIMx ########################################*/
-  /* Set the TIMx priority */
-  HAL_NVIC_SetPriority(TIMx_IRQn, 3, 0);
-
-  /* Enable the TIMx global Interrupt */
-  HAL_NVIC_EnableIRQ(TIMx_IRQn);
+#ifdef __cplusplus
 }
+#endif
 
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
+#endif /* __STM32F0xx_IT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

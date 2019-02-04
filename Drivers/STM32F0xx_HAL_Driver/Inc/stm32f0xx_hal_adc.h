@@ -935,7 +935,6 @@ void                    HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
 void                    HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc);
 void                    HAL_ADC_LevelOutOfWindowCallback(ADC_HandleTypeDef* hadc);
 void                    HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc);
-
 /**
   * @}
   */
