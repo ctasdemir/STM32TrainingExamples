@@ -122,7 +122,7 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void TIM3_IRQHandler(void)
+void TIMx_IRQHandler(void)
 {
   HAL_TIM_IRQHandler(&TimHandle);
 }
