@@ -1,0 +1,2 @@
+adc_driver.c:8:6:adc_driver_init	56	static
+adc_driver.c:80:9:adc_get_result	8	static

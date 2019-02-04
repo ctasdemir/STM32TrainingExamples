@@ -1,0 +1,7 @@
+14:17:00 **** Incremental Build of configuration Release for project EXTI_Example ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-objcopy.exe -O ihex EXTI_Example.elf EXTI_Example.hex 
+Info: Parallel threads used: 0
+
+14:17:00 Build Finished (took 217ms)
+

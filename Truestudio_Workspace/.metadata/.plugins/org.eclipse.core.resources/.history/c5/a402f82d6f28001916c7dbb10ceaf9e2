@@ -1,0 +1,12 @@
+stm32f0xx_hal_cortex.c:154:6:HAL_NVIC_SetPriority	16	static
+stm32f0xx_hal_cortex.c:170:6:HAL_NVIC_EnableIRQ	0	static
+stm32f0xx_hal_cortex.c:186:6:HAL_NVIC_DisableIRQ	0	static
+stm32f0xx_hal_cortex.c:199:6:HAL_NVIC_SystemReset	0	static
+stm32f0xx_hal_cortex.c:212:10:HAL_SYSTICK_Config	0	static
+stm32f0xx_hal_cortex.c:244:10:HAL_NVIC_GetPriority	0	static
+stm32f0xx_hal_cortex.c:257:6:HAL_NVIC_SetPendingIRQ	0	static
+stm32f0xx_hal_cortex.c:275:10:HAL_NVIC_GetPendingIRQ	0	static
+stm32f0xx_hal_cortex.c:291:6:HAL_NVIC_ClearPendingIRQ	0	static
+stm32f0xx_hal_cortex.c:308:6:HAL_SYSTICK_CLKSourceConfig	0	static
+stm32f0xx_hal_cortex.c:335:13:HAL_SYSTICK_Callback	0	static
+stm32f0xx_hal_cortex.c:326:6:HAL_SYSTICK_IRQHandler	8	static

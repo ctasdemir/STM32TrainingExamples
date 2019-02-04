@@ -13,9 +13,9 @@
 
 
 void UART_Init(void);
-void UART_send_byte_array(char* string, int size);
+void UART_send_byte_array(char* buffer, int size);
 int UART_read_byte(void);
-void UART_send_byte(char ch);
+void UART_send_byte(char data);
 int UART_bytes_to_read(void);
 
 #endif

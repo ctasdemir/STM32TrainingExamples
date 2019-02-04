@@ -1,0 +1,4 @@
+adxl345.c:13:9:adxl345_test_connection	24	static
+adxl345.c:28:9:adxl345_init	40	static
+adxl345.c:64:9:adxl345_get_g_values	56	static
+adxl345.c:88:9:adxl345_get_raw_values	40	static

@@ -137,7 +137,7 @@ static void user_led_config(void)
   /* Configure PA.5 pin as output */
   GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStructure.Pull = GPIO_NOPULL;
-	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStructure.Pin = GPIO_PIN_5;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
 	

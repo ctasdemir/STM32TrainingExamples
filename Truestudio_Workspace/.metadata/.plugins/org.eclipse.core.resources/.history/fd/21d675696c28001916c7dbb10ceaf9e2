@@ -1,0 +1,17 @@
+stm32f0xx_hal.c:204:13:HAL_MspInit	0	static
+stm32f0xx_hal.c:215:13:HAL_MspDeInit	0	static
+stm32f0xx_hal.c:181:19:HAL_DeInit	8	static
+stm32f0xx_hal.c:238:26:HAL_InitTick	8	static
+stm32f0xx_hal.c:157:19:HAL_Init	8	static
+stm32f0xx_hal.c:286:13:HAL_IncTick	0	static
+stm32f0xx_hal.c:297:17:HAL_GetTick	0	static
+stm32f0xx_hal.c:313:13:HAL_Delay	16	static
+stm32f0xx_hal.c:332:13:HAL_SuspendTick	0	static
+stm32f0xx_hal.c:349:13:HAL_ResumeTick	0	static
+stm32f0xx_hal.c:359:10:HAL_GetHalVersion	0	static
+stm32f0xx_hal.c:368:10:HAL_GetREVID	0	static
+stm32f0xx_hal.c:377:10:HAL_GetDEVID	0	static
+stm32f0xx_hal.c:386:6:HAL_DBGMCU_EnableDBGStopMode	0	static
+stm32f0xx_hal.c:395:6:HAL_DBGMCU_DisableDBGStopMode	0	static
+stm32f0xx_hal.c:404:6:HAL_DBGMCU_EnableDBGStandbyMode	0	static
+stm32f0xx_hal.c:413:6:HAL_DBGMCU_DisableDBGStandbyMode	0	static

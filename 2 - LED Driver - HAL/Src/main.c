@@ -38,9 +38,9 @@ int main(void)
   while (1)
   {		
 			user_led_set();					
-			HAL_Delay(100);		
+			HAL_Delay(1000);
 			user_led_reset();		
-		  HAL_Delay(100);		
+		    HAL_Delay(1000);
   }
 }
 
