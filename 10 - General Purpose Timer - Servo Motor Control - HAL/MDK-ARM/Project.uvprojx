@@ -488,11 +488,6 @@
           <GroupName>Drivers/UART</GroupName>
           <Files>
             <File>
-              <FileName>uart_buffer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\uart_buffer.c</FilePath>
-            </File>
-            <File>
               <FileName>uart_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\uart_driver.c</FilePath>

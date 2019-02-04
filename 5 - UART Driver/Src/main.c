@@ -17,7 +17,7 @@
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
-
+void send_time_string(void);
 
 
 /**
@@ -107,4 +107,16 @@ static void Error_Handler(void)
   while(1)
   {
   }
+}
+
+
+void send_time_string()
+{
+
+	uint32_t n = 0;
+	static uint32_t zaman;
+	zaman++;
+	
+	n = UART_bytes_to_read();
+	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
 }

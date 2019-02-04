@@ -222,13 +222,9 @@ void pwm_set_duty_cycle(uint32_t duty, uint32_t channel)
 }
 
 
-void pwm_test()
+void pwm_test(void)
 {
 	uint32_t i = 0;
-	
-	
-	
-		
 	
 	for(i = 0; i<=2000;i=i+100)
 	{

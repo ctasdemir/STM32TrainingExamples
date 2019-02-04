@@ -1,8 +1,24 @@
-#include "UART_Driver.h"
-#include "stm32f0xx_hal.h"
 #include "button_driver.h"
+#include "stm32f0xx_hal.h"
+#include "uart_driver.h"
+
+
+#define BUFFER_SIZE 256
 
 UART_HandleTypeDef UartHandle;
+
+
+
+typedef struct UART_Buffer_Type{
+	uint32_t buffer[BUFFER_SIZE];
+	uint32_t head_pointer;
+	uint32_t tail_pointer;
+}UART_Buffer_t;
+
+volatile UART_Buffer_t UART_BufferRX;
+volatile UART_Buffer_t UART_BufferTX;
+
+static int UART_is_buffer_empty(volatile UART_Buffer_t* buffer);
 static void UART_Error_Handler(void);
 
 
@@ -27,6 +43,8 @@ GPIO_InitTypeDef  GPIO_InitStruct;
   
   /*##-2- Configure peripheral GPIO ##########################################*/  
   /* UART TX GPIO pin configuration  */
+	
+	
   GPIO_InitStruct.Pin       = GPIO_PIN_2;
   GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull      = GPIO_PULLUP;
@@ -37,12 +55,15 @@ GPIO_InitTypeDef  GPIO_InitStruct;
     
   /* UART RX GPIO pin configuration  */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
+	
+  GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull      = GPIO_PULLUP;
+  GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStruct.Alternate = GPIO_AF1_USART2;
-    
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
     
 
-/*##-1- Configure the UART peripheral ######################################*/
+/*##-3- Configure the UART peripheral ######################################*/
   /* Put the USART peripheral in the Asynchronous mode (UART Mode) */
   /* UART configured as follows:
       - Word Length = 8 Bits
@@ -51,7 +72,7 @@ GPIO_InitTypeDef  GPIO_InitStruct;
       - BaudRate = 9600 baud
       - Hardware flow control disabled (RTS and CTS signals) */
   UartHandle.Instance        = USART2;
-
+	
   UartHandle.Init.BaudRate   = 9600;
   UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
   UartHandle.Init.StopBits   = UART_STOPBITS_1;
@@ -62,19 +83,21 @@ GPIO_InitTypeDef  GPIO_InitStruct;
 	
   if(HAL_UART_DeInit(&UartHandle) != HAL_OK)
   {
-    UART_Error_Handler();
+    //ERROR
+		UART_Error_Handler();
   }  
 	
   if(HAL_UART_Init(&UartHandle) != HAL_OK)
   {
+		//ERROR
     UART_Error_Handler();
   }
 	
-/* Enable UART Receive Data Register Not Empty */
+/* 4- Enable UART Receive Data Register Not Empty */
    SET_BIT(USART2->CR1, USART_CR1_RXNEIE);
 
 	
-	/* UART Kesmesini aktif hale getiriyoruz */
+	/* 5 - Enable UART Interrupt in NVIC */
 	
   HAL_NVIC_SetPriority(USART2_IRQn, 0, 1);
   HAL_NVIC_EnableIRQ(USART2_IRQn);
@@ -97,16 +120,7 @@ static void UART_Error_Handler(void)
 }
 
 
-void send_time_string()
-{
 
-	uint32_t n = 0;
-	static uint32_t zaman;
-	zaman++;
-	
-	n = UART_bytes_to_read();
-	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
-}
 
 
 /**
@@ -118,7 +132,7 @@ int fputc(int ch, FILE *f)
 {
   /* Place your implementation of fputc here */
   /* e.g. write a character to the USART1 and Loop until the end of transmission */
-  UART_send_char(ch);
+  UART_send_byte(ch);
 
   return ch;
 }
@@ -143,8 +157,11 @@ void USART2_IRQHandler(void)
     {
 			rx_data = (uint16_t) USART2->RDR;
 			
-			/* Read one byte from the receive data register */
-			UART_BufferRX.buffer[UART_BufferRX.head_pointer++] = rx_data;
+			/* Read one byte from the receive data register */ 
+			
+			UART_BufferRX.buffer[UART_BufferRX.head_pointer] = rx_data;
+			
+			UART_BufferRX.head_pointer = UART_BufferRX.head_pointer + 1;
 			
 			if(UART_BufferRX.head_pointer == BUFFER_SIZE)
 			{
@@ -178,5 +195,70 @@ void USART2_IRQHandler(void)
   }
 	
 }
+
+void UART_send_byte(char ch)
+{
+	UART_BufferTX.buffer[UART_BufferTX.head_pointer++] = ch;
+	if(UART_BufferTX.head_pointer == BUFFER_SIZE)
+	{
+		UART_BufferTX.head_pointer = 0;
+	}
+  /* Enable the UART Transmit Data Register Empty Interrupt */
+ SET_BIT(USART2->CR1, USART_CR1_TXEIE);
+}
+
+int UART_is_buffer_empty(volatile UART_Buffer_t* buffer)
+{
+	return (buffer->head_pointer == buffer->tail_pointer?1:0);
+/*	
+	if(buffer->head_pointer == buffer->tail_pointer)
+	{
+		return 1; // buffer is empty
+	}
+	else
+	{
+		 return 0;
+	}
+*/
+}
+
+int UART_read_byte()
+{
+	int kar =  0; 
+	
+	if(UART_is_buffer_empty(&UART_BufferRX) == 1 )
+	{
+		kar = -1;
+	}
+	else
+	{
+		kar = UART_BufferRX.buffer[UART_BufferRX.tail_pointer++];
+		
+		if ( UART_BufferRX.tail_pointer == BUFFER_SIZE)
+		{
+			UART_BufferRX.tail_pointer = 0;
+		}
+	}	
+	
+	return kar;	
+}
+
+
+void UART_send_byte_array(char* string, int size)
+{
+	int i;
+	
+	for(i=0;i<size;i++)
+	{
+		UART_send_byte(string[i]);
+	}
+}
+
+int UART_bytes_to_read()
+{
+	return UART_BufferRX.head_pointer - UART_BufferRX.tail_pointer;
+}
+
+
 
 

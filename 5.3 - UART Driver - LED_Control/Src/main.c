@@ -18,7 +18,7 @@
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 static int32_t UART_get_command(void);
-
+void send_time_string(void);
 /**
   * @brief  Main program
   * @param  None
@@ -119,7 +119,7 @@ int32_t UART_get_command()
 {
 	int32_t led_hiz = 0;
   int ch = 0;
-	ch = UART_read_char();
+	ch = UART_read_byte();
 	if(ch != -1)
 	{
 		 switch(ch)
@@ -143,4 +143,16 @@ int32_t UART_get_command()
 	return 0;
 }
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+void send_time_string(void)
+{
+
+	uint32_t n = 0;
+	static uint32_t zaman;
+	zaman++;
+	
+	n = UART_bytes_to_read();
+	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
+}
+
+
+/*****************************END OF FILE********************************************/
