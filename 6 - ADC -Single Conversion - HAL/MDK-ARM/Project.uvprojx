@@ -338,7 +338,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>STM32F070xB,USE_HAL_DRIVER,USE_STM32F0XX_NUCLEO</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../../Drivers/STM32F0xx_HAL_Driver/Inc;../../Drivers/BSP/STM32F0xx-Nucleo;../../Drivers/BSP/Components/Common;../../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Inc;../../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../../Drivers/STM32F0xx_HAL_Driver/Inc;../../Drivers/BSP/STM32F0xx-Nucleo;../../Drivers/BSP/Components/Common;../../Drivers/CMSIS/Include;../../Drivers/user_drivers/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -480,7 +480,7 @@
             <File>
               <FileName>uart_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\uart_driver.c</FilePath>
+              <FilePath>..\..\Drivers\user_drivers\Src\uart_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -490,12 +490,12 @@
             <File>
               <FileName>button_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\button_driver.c</FilePath>
+              <FilePath>..\..\drivers\user_drivers\Src\button_driver.c</FilePath>
             </File>
             <File>
               <FileName>led_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\led_driver.c</FilePath>
+              <FilePath>..\..\drivers\user_drivers\Src\led_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -505,7 +505,7 @@
             <File>
               <FileName>adc_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\adc_driver.c</FilePath>
+              <FilePath>..\..\drivers\user_drivers\Src\adc_driver.c</FilePath>
             </File>
           </Files>
         </Group>

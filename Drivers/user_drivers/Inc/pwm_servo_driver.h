@@ -1,3 +1,11 @@
+/**
+  ******************************************************************************
+  * @file    pwm_driver.h
+  * @author  
+  * @version 
+  * @date    
+  * @brief   PWM Driver Module Header File
+  *******************************************************************************/
 #ifndef __PWM_DRIVER_H
 #define __PWM_DRIVER_H
 #include "stm32f0xx_hal.h"

@@ -34,8 +34,7 @@ void user_led_set()
 
 void user_led_reset()
 {
-	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-	
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);	
 }
 
 

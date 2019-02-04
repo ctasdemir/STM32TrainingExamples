@@ -443,7 +443,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\uart_driver.c</PathWithFileName>
+      <PathWithFileName>..\..\Drivers\user_drivers\Src\uart_driver.c</PathWithFileName>
       <FilenameWithoutPath>uart_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -452,7 +452,7 @@
 
   <Group>
     <GroupName>Drivers/Button_Led</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -463,7 +463,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\button_driver.c</PathWithFileName>
+      <PathWithFileName>..\..\Drivers\user_drivers\Src\button_driver.c</PathWithFileName>
       <FilenameWithoutPath>button_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -475,7 +475,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\led_driver.c</PathWithFileName>
+      <PathWithFileName>..\..\Drivers\user_drivers\Src\led_driver.c</PathWithFileName>
       <FilenameWithoutPath>led_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

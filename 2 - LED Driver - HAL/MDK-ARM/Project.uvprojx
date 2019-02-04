@@ -338,7 +338,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>STM32F070xB,USE_HAL_DRIVER,USE_STM32F0XX_NUCLEO</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../../Drivers/STM32F0xx_HAL_Driver/Inc;../../Drivers/BSP/STM32F0xx-Nucleo;../../Drivers/BSP/Components/Common;../../Utilities/Log;../../Utilities/CPU</IncludePath>
+              <IncludePath>../Inc;../../Drivers/CMSIS/Device/ST/STM32F0xx/Include;../../Drivers/STM32F0xx_HAL_Driver/Inc;../../Drivers/BSP/STM32F0xx-Nucleo;../../Drivers/BSP/Components/Common;../../Drivers/user_drivers/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -405,7 +405,7 @@
             <File>
               <FileName>led_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\led_driver.c</FilePath>
+              <FilePath>..\..\Drivers\user_drivers\Src\led_driver.c</FilePath>
             </File>
           </Files>
         </Group>

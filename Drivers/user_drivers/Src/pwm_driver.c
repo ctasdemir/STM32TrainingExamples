@@ -21,7 +21,6 @@ TIM_OC_InitTypeDef sConfig;
 
 void pwm_init(void)
 {
-	uint32_t uhPrescalerValue = 0;
 	 GPIO_InitTypeDef   GPIO_InitStruct;
   /*##-1- Enable peripherals and GPIO Clocks #################################*/
   /* TIM1 Peripheral clock enable */

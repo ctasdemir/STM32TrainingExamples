@@ -103,11 +103,5 @@ int32_t adc_get_result(void)
   */
 void ADC1_IRQHandler(void)
 {
-  /* USER CODE BEGIN ADC1_IRQn 0 */
-
-  /* USER CODE END ADC1_IRQn 0 */
   HAL_ADC_IRQHandler(&AdcHandle);
-  /* USER CODE BEGIN ADC1_IRQn 1 */
-
-  /* USER CODE END ADC1_IRQn 1 */
 }

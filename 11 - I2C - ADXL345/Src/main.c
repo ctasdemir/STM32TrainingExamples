@@ -44,7 +44,7 @@ int main(void)
    UART_send_string(string,size);
 	 */
 		size = sprintf(string,"%f %f %f\n",x,y,z);
-    UART_send_string(string,size);
+    UART_send_byte_array(string,size);
 		HAL_Delay(100);
   }
 }

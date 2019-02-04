@@ -7,7 +7,7 @@
 
 
 
-extern ADC_HandleTypeDef       AdcHandle;
+extern ADC_HandleTypeDef  AdcHandle;
 volatile int adc_value;
 volatile int adc_ready;
 

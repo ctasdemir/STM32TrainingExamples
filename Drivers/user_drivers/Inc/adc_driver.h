@@ -1,21 +1,19 @@
 /**
   ******************************************************************************
-  * @file    button_driver.c 
+  * @file    adc_driver.h
   * @author  
   * @version 
   * @date    
-  * @brief   Button Driver Module
+  * @brief   ADC Driver Module Header File
   *******************************************************************************/
-#ifndef __BUTTON_DRIVER_H
-#define __BUTTON_DRIVER_H
+#ifndef __ADC_DRIVER_H
+#define __ADC_DRIVER_H
 
 #include <stdint.h>
 
-#define BUTTON_ON 0
-#define BUTTON_OFF 1
 
-void button_init(void);
-int32_t button_get_state(void);
+void adc_driver_init(void);
+int32_t adc_get_result(void);
 
 
 #endif
