@@ -1,10 +1,11 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    stm32f0xx_it.c
-  * @brief   Interrupt Service Routines.
+  * @file    stm32f0xx_it.h
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -30,59 +31,49 @@
   *
   ******************************************************************************
   */
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f0xx_hal.h"
-#include "stm32f0xx.h"
-#include "stm32f0xx_it.h"
+/* USER CODE END Header */
 
-/* USER CODE BEGIN 0 */
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __STM32F0xx_IT_H
+#define __STM32F0xx_IT_H
 
-/* USER CODE END 0 */
+#ifdef __cplusplus
+ extern "C" {
+#endif 
 
-/* External variables --------------------------------------------------------*/
-extern TIM_HandleTypeDef htim3;
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
 
-/******************************************************************************/
-/*            Cortex-M0 Processor Interruption and Exception Handlers         */ 
-/******************************************************************************/
+/* USER CODE END Includes */
 
-/**
-* @brief This function handles System tick timer.
-*/
-void SysTick_Handler(void)
-{
-  /* USER CODE BEGIN SysTick_IRQn 0 */
+/* Exported types ------------------------------------------------------------*/
+/* USER CODE BEGIN ET */
 
-  /* USER CODE END SysTick_IRQn 0 */
-  HAL_IncTick();
-  HAL_SYSTICK_IRQHandler();
-  /* USER CODE BEGIN SysTick_IRQn 1 */
+/* USER CODE END ET */
 
-  /* USER CODE END SysTick_IRQn 1 */
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
+
+/* USER CODE END EC */
+
+/* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN EM */
+
+/* USER CODE END EM */
+
+/* Exported functions prototypes ---------------------------------------------*/
+void HardFault_Handler(void);
+void SVC_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
+/* USER CODE BEGIN EFP */
+
+/* USER CODE END EFP */
+
+#ifdef __cplusplus
 }
+#endif
 
-/******************************************************************************/
-/* STM32F0xx Peripheral Interrupt Handlers                                    */
-/* Add here the Interrupt Handlers for the used peripherals.                  */
-/* For the available peripheral interrupt handler names,                      */
-/* please refer to the startup file (startup_stm32f0xx.s).                    */
-/******************************************************************************/
+#endif /* __STM32F0xx_IT_H */
 
-/**
-* @brief This function handles TIM3 global interrupt.
-*/
-void TIM3_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM3_IRQn 0 */
-
-  /* USER CODE END TIM3_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim3);
-  /* USER CODE BEGIN TIM3_IRQn 1 */
-  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
-  /* USER CODE END TIM3_IRQn 1 */
-}
-
-/* USER CODE BEGIN 1 */
-
-/* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

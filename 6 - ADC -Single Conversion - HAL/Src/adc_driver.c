@@ -33,7 +33,6 @@ void adc_driver_init(void)
   
 	if (HAL_ADC_DeInit(&AdcHandle) != HAL_OK)
   {
-    /* ADC de-initialization Error */
    // Error_Handler();
   }
 

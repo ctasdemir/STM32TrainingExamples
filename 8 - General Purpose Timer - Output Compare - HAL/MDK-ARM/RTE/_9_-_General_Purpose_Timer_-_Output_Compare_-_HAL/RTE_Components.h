@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'timerLedBlink' 
- * Target:  'timerLedBlink' 
+ * Project: '9 - General Purpose Timer - Output Compare - HAL' 
+ * Target:  '9 - General Purpose Timer - Output Compare - HAL' 
  */
 
 #ifndef RTE_COMPONENTS_H

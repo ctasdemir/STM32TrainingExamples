@@ -386,18 +386,20 @@ ARM Macro Assembler    Page 6
               00000000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
-ork --depend=timerledblink\startup_stm32f070xb.d -otimerledblink\startup_stm32f
-070xb.o -I.\RTE\_timerLedBlink -IC:\Keil\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\In
+ork --depend="9 - general purpose timer - output compare - hal\startup_stm32f07
+0xb.d" -o"9 - general purpose timer - output compare - hal\startup_stm32f070xb.
 
 
 
 ARM Macro Assembler    Page 7 
 
 
-clude -IC:\Keil\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32
-F0xx\Include --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --pred
-efine="__UVISION_VERSION SETA 526" --predefine="_RTE_ SETA 1" --predefine="STM3
-2F070xB SETA 1" --list=startup_stm32f070xb.lst startup_stm32f070xb.s
+o" -I.\RTE\_9_-_General_Purpose_Timer_-_Output_Compare_-_HAL -IC:\Keil\ARM\PACK
+\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0
+\Drivers\CMSIS\Device\ST\STM32F0xx\Include --predefine="__EVAL SETA 1" --predef
+ine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 526" --predefine="_
+RTE_ SETA 1" --predefine="STM32F070xB SETA 1" --list=startup_stm32f070xb.lst st
+artup_stm32f070xb.s
 
 
 
