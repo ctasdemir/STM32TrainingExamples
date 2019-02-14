@@ -18,8 +18,6 @@
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
-void send_adc_string(void);
-
 
 
 /**
@@ -36,17 +34,10 @@ int main(void)
 
 	UART_Init();			
 	pwm_init();
-	
-	
-	
-	
-	/* Infinite loop */
-  while (1)
-  {
-		
-		pwm_test();
-	
 			
+  while (1)
+  {		
+		pwm_test();			
   }
 }
 

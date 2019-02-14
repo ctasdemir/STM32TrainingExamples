@@ -184,13 +184,12 @@ void pwm_init(void)
 
 void pwm_enable(void)
 {
-	TIM3->CR1 |= TIM_CR1_CEN;
-	TIM3->EGR |= TIM_EGR_UG;
+	HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_1);
 }
 
 void pwm_disable(void)
 {
-	TIM3->CR1 &= ~(TIM_CR1_CEN);	
+	HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_1);
 }
 
 
@@ -203,20 +202,20 @@ void pwm_set_duty_cycle(uint32_t duty, uint32_t channel)
 	switch(channel)
 	{
 		case 1:
-				__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_1, arr_val);
+		__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_1, arr_val);
 		break;
 		
 		case 2:
-				__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_2, arr_val);
-			break;
+		__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_2, arr_val);
+		break;
 				
 		case 3:
-				__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_3, arr_val);
-			break;
+		__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_3, arr_val);
+		break;
 					
 		case 4:
-				__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_4, arr_val);
-			break;
+		__HAL_TIM_SET_COMPARE(&TimHandle, TIM_CHANNEL_4, arr_val);
+		break;
 	}
 }
 
@@ -227,15 +226,15 @@ void pwm_test(void)
 	
 	for(i = 0; i<=100;i=i+10)
 	{
-	  pwm_set_duty_cycle(i,1);
-		HAL_Delay(100);
+	 pwm_set_duty_cycle(i,1);
+	 HAL_Delay(100);
 	}
 	
 		
 	for(i = 100; i>=10;i=i-10)
 	{
-	  pwm_set_duty_cycle(i,1);
-		HAL_Delay(100);
+	 pwm_set_duty_cycle(i,1);
+	 HAL_Delay(100);
 	}
 }
 /**

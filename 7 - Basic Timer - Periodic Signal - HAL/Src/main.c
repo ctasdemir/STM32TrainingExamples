@@ -1,9 +1,8 @@
 /**
   ******************************************************************************
-  * @file    TIM/TIM_TimeBase/Src/main.c
-  * @author  MCD Application Team
-  * @brief   This sample code shows how to use STM32F0xx TIM HAL API to generate
-  *          a time base of one second with the corresponding Interrupt request.
+  * @file    main.c
+  * @author  C.T
+  * @brief   Timer ile Periyodik Sinyal Örneði
   ******************************************************************************
   */
 
@@ -12,10 +11,10 @@
 #include "led_driver.h"
 
 
-/* TIM handle declaration */
+
 TIM_HandleTypeDef    TimHandle;
 
-/* Prescaler declaration */
+
 uint32_t uwPrescalerValue = 0;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -31,48 +30,30 @@ static void Error_Handler(void);
   */
 int main(void)
 {
-
-  /* STM32F0xx HAL library initialization:
-       - Configure the Flash prefetch
-       - Systick timer is configured by default as source of time base, but user 
-         can eventually implement his proper time base source (a general purpose 
-         timer for example or other time source), keeping in mind that Time base 
-         duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and 
-         handled in milliseconds basis.
-       - Low Level Initialization
-     */
   HAL_Init();
-
 
   /* Configure the system clock to 48 MHz */
   SystemClock_Config();
 
-  /*##-1- Configure the TIM peripheral #######################################*/
+  /*##-1- Configure the TIM peripheral*/
   /* -----------------------------------------------------------------------
     In this example TIM3 input clock (TIM3CLK)  is set to APB1 clock (PCLK1),
     since APB1 prescaler is equal to 1.
-      TIM3CLK = PCLK1
-      PCLK1 = HCLK
-      => TIM3CLK = HCLK = SystemCoreClock
-    To get TIM3 counter clock at 10 KHz, the Prescaler is computed as following:
-    Prescaler = (TIM3CLK / TIM3 counter clock) - 1
-    Prescaler = (SystemCoreClock /10 KHz) - 1
+    TIM3CLK = PCLK1
+    PCLK1 = HCLK
+    => TIM3CLK = HCLK = SystemCoreClock
 
-    Note:
-     SystemCoreClock variable holds HCLK frequency and is defined in system_stm32f0xx.c file.
-     Each time the core clock (HCLK) changes, user had to update SystemCoreClock
-     variable value. Otherwise, any configuration based on this variable will be incorrect.
-     This variable is updated in three ways:
-      1) by calling CMSIS function SystemCoreClockUpdate()
-      2) by calling HAL API function HAL_RCC_GetSysClockFreq()
-      3) each time HAL_RCC_ClockConfig() is called to configure the system clock frequency
+
+    To get TIM3 counter clock at 1 KHz, the Prescaler is computed as following:
+    Prescaler = (TIM3CLK / TIM3 counter clock) - 1
+    Prescaler = (SystemCoreClock /1 KHz) - 1
   ----------------------------------------------------------------------- */
 
   /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
   uwPrescalerValue = (uint32_t)(SystemCoreClock / 1000) - 1;
 
   /* Set TIMx instance */
-  TimHandle.Instance = TIMx;
+  TimHandle.Instance = TIM3;
 
   /* Initialize TIMx peripheral as follows:
        + Period = 10000 - 1

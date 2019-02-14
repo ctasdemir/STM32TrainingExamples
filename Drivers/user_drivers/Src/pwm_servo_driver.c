@@ -97,7 +97,7 @@ void pwm_init(void)
 	
 
   
-	TimHandle.Instance = TIM1;
+  TimHandle.Instance = TIM1;
 
   TimHandle.Init.Prescaler         = 47;
   TimHandle.Init.Period            = PERIOD_VALUE;
@@ -184,13 +184,12 @@ void pwm_init(void)
 
 void pwm_enable(void)
 {
-	TIM3->CR1 |= TIM_CR1_CEN;
-	TIM3->EGR |= TIM_EGR_UG;
+	HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_1);
 }
 
 void pwm_disable(void)
 {
-	TIM3->CR1 &= ~(TIM_CR1_CEN);	
+	HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_1);
 }
 
 

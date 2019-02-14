@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    main.c
   * @author  C.T
-  * @version V1.0
-  * @date
+  * @version V1.7.0
+  * @date    04-November-2016
   * @brief   Main program body
   ******************************************************************************/
 
@@ -32,8 +32,8 @@ int main(void)
   /* Configure the system clock to have a system clock = 48 Mhz */
   SystemClock_Config();
 
-  UART_Init();
-  user_led_init();
+	UART_Init();	
+	user_led_init();
   button_init();
 	
   /* Infinite loop */

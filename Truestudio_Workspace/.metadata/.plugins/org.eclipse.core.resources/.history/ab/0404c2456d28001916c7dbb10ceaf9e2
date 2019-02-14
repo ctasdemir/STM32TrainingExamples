@@ -1,7 +1,0 @@
-uart_driver.c:32:6:UART_Init	48	static
-uart_driver.c:148:6:USART2_IRQHandler	12	static
-uart_driver.c:199:6:UART_send_byte	8	static
-stdio.h:214:5:fputc	8	static
-uart_driver.c:225:5:UART_read_byte	8	static
-uart_driver.c:247:6:UART_send_byte_array	16	static
-uart_driver.c:257:5:UART_bytes_to_read	0	static

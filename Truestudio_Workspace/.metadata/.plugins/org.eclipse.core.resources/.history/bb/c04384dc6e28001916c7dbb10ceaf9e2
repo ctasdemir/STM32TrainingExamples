@@ -1,5 +1,0 @@
-pwm_driver.c:22:6:pwm_init	48	static
-pwm_driver.c:185:6:pwm_enable	0	static
-pwm_driver.c:191:6:pwm_disable	0	static
-pwm_driver.c:197:6:pwm_set_duty_cycle	8	static
-pwm_driver.c:224:6:pwm_test	8	static

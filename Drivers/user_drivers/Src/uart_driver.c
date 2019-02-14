@@ -130,10 +130,7 @@ static void UART_Error_Handler(void)
   */
 int fputc(int ch, FILE *f)
 {
-  /* Place your implementation of fputc here */
-  /* e.g. write a character to the USART1 and Loop until the end of transmission */
   UART_send_byte(ch);
-
   return ch;
 }
 

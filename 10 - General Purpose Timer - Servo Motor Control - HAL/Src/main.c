@@ -34,19 +34,13 @@ int main(void)
   /* Configure the system clock to have a system clock = 48 Mhz */
   SystemClock_Config();
 
-	UART_Init();			
-	pwm_init();
+ UART_Init();
+ pwm_init();
 	
 	
-	
-	
-	/* Infinite loop */
   while (1)
   {
-		
-		pwm_test();
-	
-			
+	pwm_test();
   }
 }
 
