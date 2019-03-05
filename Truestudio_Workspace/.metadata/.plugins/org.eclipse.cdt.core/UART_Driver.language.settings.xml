@@ -1047,8 +1047,14 @@
 					</entry>
 				</language>
 				<language id="org.eclipse.cdt.core.g++">
-					<entry kind="includePath" name="/${ProjName}/#undef __ARM_FEATURE_IDIV">
+					<entry kind="includePath" name="/${ProjName}/#undef __ARM_NEON_FP">
 						<flag value="BUILTIN|READONLY|LOCAL|VALUE_WORKSPACE_PATH"/>
+					</entry>
+					<entry kind="includePath" name="/${ProjName}/#undef __ARM_ARCH_EXT_IDIV__">
+						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH"/>
+					</entry>
+					<entry kind="includePath" name="/${ProjName}/#undef __ARM_FEATURE_IDIV">
+						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH"/>
 					</entry>
 					<entry kind="includePath" name="/${ProjName}/#undef __ARM_ASM_SYNTAX_UNIFIED__">
 						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH"/>

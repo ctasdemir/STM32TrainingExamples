@@ -18,7 +18,7 @@ typedef struct UART_Buffer_Type{
 volatile UART_Buffer_t UART_BufferRX;
 volatile UART_Buffer_t UART_BufferTX;
 
-static int32_t UART_is_buffer_empty(volatile UART_Buffer_t* buffer);
+static int UART_is_buffer_empty(volatile UART_Buffer_t* buffer);
 static void UART_Error_Handler(void);
 
 
