@@ -128,11 +128,23 @@ static void UART_Error_Handler(void)
   * @param  None
   * @retval None
   */
+
+
+
+
+#ifdef __GNUC__
+int __io_putchar(int ch)
+{
+	UART_send_byte(ch);
+	  return ch;
+}
+#else
 int fputc(int ch, FILE *f)
 {
   UART_send_byte(ch);
   return ch;
 }
+#endif
 
 
 /**
@@ -238,6 +250,30 @@ int UART_read_byte()
 	}	
 	
 	return kar;	
+}
+
+
+int UART_read_buffer(uint8_t buffer[], uint32_t size)
+{
+	int kar =  0;
+
+	if(UART_is_buffer_empty(&UART_BufferRX) == 1 )
+	{
+		return -1;
+	}
+	else
+	{
+		memcpy(buffer,&UART_BufferRX.buffer[UART_BufferRX.tail_pointer],size);
+
+		UART_BufferRX.tail_pointer += size;
+
+		if ( UART_BufferRX.tail_pointer == BUFFER_SIZE)
+		{
+			UART_BufferRX.tail_pointer = 0;
+		}
+	}
+
+	return kar;
 }
 
 
