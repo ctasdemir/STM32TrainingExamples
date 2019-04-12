@@ -7,7 +7,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "stm32f070xb.h"
+#include "stm32f0xx_hal.h"
 #include "led_driver.h"
 
 
@@ -15,7 +16,7 @@
 TIM_HandleTypeDef    TimHandle;
 
 
-uint32_t uwPrescalerValue = 0;
+uint32_t PrescalerValue = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -49,24 +50,25 @@ int main(void)
     Prescaler = (SystemCoreClock /1 KHz) - 1
   ----------------------------------------------------------------------- */
 
-  /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
-  uwPrescalerValue = (uint32_t)(SystemCoreClock / 1000) - 1;
+  /* Compute the prescaler value to have TIMx counter clock equal to 1000 Hz */
+  PrescalerValue = (uint32_t)(SystemCoreClock / 1000) - 1;
 
   /* Set TIMx instance */
   TimHandle.Instance = TIM3;
 
   /* Initialize TIMx peripheral as follows:
-       + Period = 10000 - 1
-       + Prescaler = (SystemCoreClock/10000) - 1
+       + Period = 1000 - 1
+       + Prescaler = (SystemCoreClock/1000) - 1
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 500;
-  TimHandle.Init.Prescaler         = uwPrescalerValue;
+  TimHandle.Init.Period            = 999;
+  TimHandle.Init.Prescaler         = PrescalerValue;
   TimHandle.Init.ClockDivision     = 0;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
   TimHandle.Init.RepetitionCounter = 0;
   TimHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+	
 
   if (HAL_TIM_Base_Init(&TimHandle) != HAL_OK)
   {

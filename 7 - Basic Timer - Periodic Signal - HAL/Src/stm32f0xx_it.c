@@ -36,7 +36,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+
 #include "stm32f0xx_it.h"
 
 /** @addtogroup STM32F0xx_HAL_Examples
@@ -122,7 +122,7 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void TIMx_IRQHandler(void)
+void TIM3_IRQHandler(void)
 {
   HAL_TIM_IRQHandler(&TimHandle);
 }

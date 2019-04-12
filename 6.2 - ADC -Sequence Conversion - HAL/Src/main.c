@@ -1,9 +1,9 @@
 /**
   ******************************************************************************
-  * @file    main.c
-  * @author  C.T
-  * @version V1.0
-  * @date
+  * @file    Templates/Src/main.c 
+  * @author  MCD Application Team
+  * @version V1.7.0
+  * @date    04-November-2016
   * @brief   Main program body
   ******************************************************************************/
 
@@ -12,12 +12,14 @@
 #include "UART_driver.h"
 #include "led_driver.h"
 #include "button_driver.h"
-
+#include "adc_driver.h"
 
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
-void send_time_string(void);
+
+void send_adc_string(void);
+
 
 
 /**
@@ -35,22 +37,28 @@ int main(void)
 	UART_Init();	
 	user_led_init();
   button_init();
+	adc_driver_init();
+
 	
   /* Infinite loop */
   while (1)
   {
-		if(button_get_state() == 0){
+		if(button_get_state() == 0)
+		{
 			user_led_toggle();
-			send_time_string();
+			adc_print_results();
 			HAL_Delay(1000);			
 		}
-		else{
+		else
+		{
 			user_led_toggle();
-			send_time_string();
+			adc_print_results();			
 			HAL_Delay(100);
 		}
   }
 }
+
+
 
 /**
   * @brief  System Clock Configuration
@@ -107,16 +115,4 @@ static void Error_Handler(void)
   while(1)
   {
   }
-}
-
-
-void send_time_string()
-{
-
-	uint32_t n = 0;
-	static uint32_t zaman;
-	zaman++;
-	
-	n = UART_bytes_to_read();
-	printf("zaman:%d gelen_veri:%d Buton Durum:%d\n\r",zaman,n,button_get_state());
 }
