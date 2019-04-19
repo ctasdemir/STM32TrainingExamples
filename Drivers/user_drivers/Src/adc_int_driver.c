@@ -59,43 +59,24 @@ void adc_driver_init(void)
   }
   
   
-  /* ### - 2 - Start calibration ############################################ */
+  /* - 2 - Start calibration  */
   if (HAL_ADCEx_Calibration_Start(&AdcHandle) != HAL_OK)
   {
     //Error_Handler();
   }
   
-  /* ### - 3 - Channel configuration ######################################## */
-  sConfig.Channel      = ADC_CHANNEL_0;               /* Channel to be converted */
+  /* - 3 - Channel configuration  */
+  sConfig.Channel      = ADC_CHANNEL_0;          
   sConfig.Rank         = ADC_RANK_CHANNEL_NUMBER;
   if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
   {
     //Error_Handler();
   }
 	
-	    /* ADC1 interrupt Init */
+	  /* ADC1 interrupt Init */
     HAL_NVIC_SetPriority(ADC1_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(ADC1_IRQn);
  }
-
-int32_t adc_get_result(void)
-{
-	int32_t result = 0;
-	HAL_StatusTypeDef retVal;
-	HAL_ADC_Start(&AdcHandle);
-	retVal  = HAL_ADC_PollForConversion(&AdcHandle,100);
-	if(retVal == HAL_OK)
-	{
-		result = HAL_ADC_GetValue(&AdcHandle);
-	
-	}
-	else
-	{
-		return HAL_ERROR; // error
-	}
-	
-	return result;				
-}
 
 
 /**

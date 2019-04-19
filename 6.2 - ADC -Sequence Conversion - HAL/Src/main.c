@@ -1,7 +1,6 @@
-/**
-  ******************************************************************************
-  * @file    Templates/Src/main.c 
-  * @author  MCD Application Team
+/********************************************************************************
+  * @file    Src/main.c 
+  * @author  
   * @version V1.7.0
   * @date    04-November-2016
   * @brief   Main program body

@@ -15,8 +15,8 @@
 extern TIM_HandleTypeDef    TimHandle;
 
 void pwm_init(void);
-void pwm_enable(void);
-void pwm_disable(void);
+void pwm_enable(uint32_t channel);
+void pwm_disable(uint32_t channel);
 void pwm_set_duty_cycle(uint32_t duty, uint32_t channel);
 void pwm_test(void);
 

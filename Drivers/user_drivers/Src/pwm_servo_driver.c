@@ -1,6 +1,6 @@
 
 
-#include "pwm_driver.h"
+#include "pwm_servo_driver.h"
 
 
 static void PWM_Error_Handler(void);
@@ -22,11 +22,11 @@ TIM_OC_InitTypeDef sConfig;
 void pwm_init(void)
 {
 	 GPIO_InitTypeDef   GPIO_InitStruct;
-  /*##-1- Enable peripherals and GPIO Clocks #################################*/
-  /* TIM1 Peripheral clock enable */
+  /* -1- Clock 'lari aciyoruz */
+  
   __HAL_RCC_TIM1_CLK_ENABLE();
 
-  /* Enable GPIO Channels Clock */
+  
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /* PA.08 (TIM1_Channel1)
@@ -35,7 +35,8 @@ void pwm_init(void)
      PA.11 (TIM1_Channel4) 
 	   output, push-pull, alternate function mode
   */
-  /* Common configuration for all channels */
+  
+	/* Timer kanali olarak kullanilacak GPIO Ayarlari */
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -57,7 +58,7 @@ void pwm_init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
 	
-	/*##-1- Configure the TIM peripheral #######################################*/
+	/*##-1- Configure the TIM peripheral */
   /* -----------------------------------------------------------------------
   TIM1 Configuration: generate 4 PWM signals with 4 different duty cycles.
 
@@ -93,10 +94,6 @@ void pwm_init(void)
        + Counter direction = Up
   */
 	
-	
-	
-
-  
   TimHandle.Instance = TIM1;
 
   TimHandle.Init.Prescaler         = 47;
@@ -111,8 +108,8 @@ void pwm_init(void)
     PWM_Error_Handler();
   }
 
-  /*##-2- Configure the PWM channels #########################################*/
-  /* Common configuration for all channels */
+  /*##-2- PWM Kanal Ayarlari */
+  /* Tüm kanallar icin ortak ayarlar */
   sConfig.OCMode       = TIM_OCMODE_PWM1;
   sConfig.OCPolarity   = TIM_OCPOLARITY_HIGH;
   sConfig.OCFastMode   = TIM_OCFAST_DISABLE;
@@ -121,23 +118,23 @@ void pwm_init(void)
 
   sConfig.OCIdleState  = TIM_OCIDLESTATE_RESET;
 
-  /* Set the pulse value for channel 1 */
+  /* Kanal-1 Duty Cycle Degeri */
   sConfig.Pulse = PULSE1_VALUE;
   if (HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1) != HAL_OK)
   {
-    /* Configuration Error */
+    /* Error */
     PWM_Error_Handler();
   }
 
-  /* Set the pulse value for channel 2 */
+  /* Kanal-2 Duty Cycle Degeri */
   sConfig.Pulse = PULSE2_VALUE;
   if (HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_2) != HAL_OK)
   {
-    /* Configuration Error */
+    /* Error */
     PWM_Error_Handler();
   }
 
-  /* Set the pulse value for channel 3 */
+  /* Kanal-3 Duty Cycle Degeri */
   sConfig.Pulse = PULSE3_VALUE;
   if (HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_3) != HAL_OK)
   {
@@ -145,59 +142,101 @@ void pwm_init(void)
     PWM_Error_Handler();
   }
 
-  /* Set the pulse value for channel 4 */
+  /* Kanal-4 Duty Cycle Degeri */
   sConfig.Pulse = PULSE4_VALUE;
   if (HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_4) != HAL_OK)
   {
-    /* Configuration Error */
+    /* Error */
     PWM_Error_Handler();
   }
 
-  /*##-3- Start PWM signals generation #######################################*/
-  /* Start channel 1 */
+  /* -3- PWM sinyali uretmeye basliyoruz */
+  
+	/* Kanal 1'i baslat */
   if (HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_1) != HAL_OK)
   {
-    /* PWM Generation Error */
+    /* Error */
     PWM_Error_Handler();
   }
-  /* Start channel 2 */
+  
+	/* Kanal 2'yi baslat */
   if (HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_2) != HAL_OK)
   {
-    /* PWM Generation Error */
+    /* Error */
     PWM_Error_Handler();
   }
-  /* Start channel 3 */
+  
+	/* Kanal 3'u baslat */
   if (HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_3) != HAL_OK)
   {
-    /* PWM generation Error */
+    /* Error */
     PWM_Error_Handler();
   }
-  /* Start channel 4 */
+  
+	/* Kanal 4'u baslat */
   if (HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_4) != HAL_OK)
   {
-    /* PWM generation Error */
+    /* Error */
     PWM_Error_Handler();
-  }
- 	
+  } 	
 }
 
 
-void pwm_enable(void)
+void pwm_enable(uint32_t channel)
 {
-	HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_1);
+	switch(channel)
+	{
+		case 1:
+				HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_1);
+		break;
+		
+		case 2:
+				HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_2);
+			break;
+				
+		case 3:
+				HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_3);
+			break;
+					
+		case 4:
+				HAL_TIM_PWM_Start(&TimHandle,TIM_CHANNEL_4);
+			break;
+	}
+	
 }
 
-void pwm_disable(void)
+void pwm_disable(uint32_t channel)
 {
-	HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_1);
+		switch(channel)
+	{
+		case 1:
+				HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_1);
+		break;
+		
+		case 2:
+				HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_2);
+			break;
+				
+		case 3:
+				HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_3);
+			break;
+					
+		case 4:
+				HAL_TIM_PWM_Stop(&TimHandle,TIM_CHANNEL_4);
+			break;
+	}
+	
 }
 
-
+/**
+  * @brief  Yuzde cinsinden verilen(0-100) duty cycle degerini kanallara atar
+  * @param  duty (yuzde degeri)
+  * @retval channel (duty cycle degeri ayarlanacak kanal numarasi (1-4)
+  */
 void pwm_set_duty_cycle(uint32_t duty, uint32_t channel)
 {
 	uint32_t arr_val = 0;
 	arr_val = (PERIOD_VALUE * duty) / 100;
-	
 	
 	switch(channel)
 	{

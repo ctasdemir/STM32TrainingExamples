@@ -1,4 +1,3 @@
-/* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_hal.h"
 #include "UART_driver.h"
 #include "led_driver.h"
@@ -38,8 +37,7 @@ int main(void)
 	/* Infinite loop */
   while (1)
   {
-			user_led_toggle();
-		//	send_adc_string();
+		user_led_toggle();		
 		
 		if(adc_ready == 1)
 		{
@@ -50,17 +48,6 @@ int main(void)
   }
 }
 
-void send_adc_string(void)
-{
-	uint32_t adc = 0;
-	float voltage = 0.0;
-	static uint32_t time;
-	time++;
-	adc = adc_get_result();
-	voltage = (adc / 4095.0) * 3.3;
-	
-	printf("zaman:%d ADC Verisi:%d %2.2f V Buton Durum:%s\n\r",time,adc,voltage,button_get_state()?"OFF":"ON");
-}
 
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc1)
@@ -69,9 +56,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc1)
  adc_value = HAL_ADC_GetValue(hadc1);
  adc_ready = 1;
 
- HAL_ADC_Start_IT(hadc1); // Re-Start ADC1 under Interrupt
-                         // this is necessary because we don'use
-                         // the Continuos Conversion Mode
+ HAL_ADC_Start_IT(hadc1); // Re-Start ADC1 under Interrupt                          
 }
 
 /**
