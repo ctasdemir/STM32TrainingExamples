@@ -18,6 +18,7 @@ void adc_driver_init(void)
 	// enable ADC1 clock
 
 	__HAL_RCC_ADC1_CLK_ENABLE();
+	
 	// Enable HSI14 Mhz ADC Clock
 	
  __HAL_RCC_HSI14ADC_ENABLE();
@@ -26,7 +27,6 @@ void adc_driver_init(void)
 	gpio_init.Pin = GPIO_PIN_0;
 	gpio_init.Mode = GPIO_MODE_ANALOG;
 	HAL_GPIO_Init(GPIOA,&gpio_init);
-	
 	
 	
 	AdcHandle.Instance          = ADC1;

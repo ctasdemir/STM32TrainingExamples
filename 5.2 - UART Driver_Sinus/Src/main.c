@@ -44,7 +44,7 @@ int main(void)
     for(i=0.0; i<6.28;i+=0.05)
 		{
 			
-			printf("%f \n",sin(i)+2*cos(2*i));
+			printf("%f \n",sin(i));
 			HAL_Delay(50);
 		}
 		

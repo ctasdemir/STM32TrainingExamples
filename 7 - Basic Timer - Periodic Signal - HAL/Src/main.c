@@ -62,8 +62,8 @@ int main(void)
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 99;
-  TimHandle.Init.Prescaler         = 47999;
+  TimHandle.Init.Period            = 999;
+  TimHandle.Init.Prescaler         = PrescalerValue;
   TimHandle.Init.ClockDivision     = 0;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
   TimHandle.Init.RepetitionCounter = 0;
@@ -87,16 +87,8 @@ int main(void)
 	
 	user_led_init();
 
-
   while (1)
   {
-			__HAL_TIM_SetAutoreload(&TimHandle,499);
-				HAL_Delay(4000);	
-			__HAL_TIM_SetAutoreload(&TimHandle,999);
-		    HAL_Delay(4000);
-		__HAL_TIM_SetAutoreload(&TimHandle,799);
-		HAL_Delay(4000);	
-		
 		
   }
 }
