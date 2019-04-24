@@ -72,9 +72,7 @@ void adc_driver_init(void)
   if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
   {
     //Error_Handler();
-  }
-	
-	
+  }	
  }
 
 int32_t adc_get_result(void)

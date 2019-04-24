@@ -38,31 +38,28 @@ int main(void)
 
   /*##-1- Configure the TIM peripheral*/
   /* -----------------------------------------------------------------------
-    In this example TIM3 input clock (TIM3CLK)  is set to APB1 clock (PCLK1),
-    since APB1 prescaler is equal to 1.
+    TIM3 input clock (TIM3CLK) = APB1 clock (PCLK1)
     TIM3CLK = PCLK1
     PCLK1 = HCLK
-    => TIM3CLK = HCLK = SystemCoreClock
+    TIM3CLK = HCLK = SystemCoreClock (48 Mhz)
 
 
-    To get TIM3 counter clock at 1 KHz, the Prescaler is computed as following:
-    Prescaler = (TIM3CLK / TIM3 counter clock) - 1
+    TIM3 clock kaynagi 1 KHz olmasi için
     Prescaler = (SystemCoreClock /1 KHz) - 1
+	  
   ----------------------------------------------------------------------- */
 
-  /* Compute the prescaler value to have TIMx counter clock equal to 1000 Hz */
   PrescalerValue = (uint32_t)(SystemCoreClock / 1000) - 1;
 
-  /* Set TIMx instance */
   TimHandle.Instance = TIM3;
 
-  /* Initialize TIMx peripheral as follows:
+  /* TIM3 Ayarlari:
        + Period = 1000 - 1
        + Prescaler = (SystemCoreClock/1000) - 1
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 999;
+  TimHandle.Init.Period            = 99; // 500 ms period
   TimHandle.Init.Prescaler         = PrescalerValue;
   TimHandle.Init.ClockDivision     = 0;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
@@ -76,7 +73,7 @@ int main(void)
     Error_Handler();
   }
 
-  /*##-2- Start the TIM Base generation in interrupt mode ####################*/
+  /*-2- Start the TIM Base generation in interrupt mode*/
   /* Start Channel1 */
 	
   if (HAL_TIM_Base_Start_IT(&TimHandle) != HAL_OK)

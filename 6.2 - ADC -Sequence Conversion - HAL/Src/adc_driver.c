@@ -2,14 +2,13 @@
 #include "stm32f0xx_hal.h"
 #include "adc_driver.h"
 
-
 volatile int32_t adc_result[4] = {0};
 int32_t adc_index =0 ;
 
 ADC_HandleTypeDef       AdcHandle;
 ADC_ChannelConfTypeDef  sConfig;
 GPIO_InitTypeDef gpio_init;
-
+void adc_handler(ADC_HandleTypeDef* hadc);
 void adc_driver_init(void)
 {	
 	// Enable Clock
@@ -119,25 +118,16 @@ void adc_driver_init(void)
   {
     //Error_Handler();
   }
-	
-	
-	
 
-	
-	//ADC1->IER |= ADC_IER_EOCIE;
-	//ADC1->IER |= ADC_IER_EOSIE;
-	
-	
 	NVIC_EnableIRQ(ADC1_IRQn);
 	NVIC_SetPriority(ADC1_IRQn,0);
 	
-		HAL_ADC_Start_IT(&AdcHandle);
+	HAL_ADC_Start_IT(&AdcHandle);
 }
 
 
 void adc_print_results()
-{
-	
+{	
 	printf("ADC1=%d ADC2=%d ADC3=%d ADC4=%d\n\r",adc_result[0],adc_result[1],adc_result[2],adc_result[3]);
 }
 
@@ -146,15 +136,9 @@ void adc_print_results()
 
 
 
+
 void ADC1_IRQHandler()
 {
-	// ADC OVERRUN
-	if(( (ADC1->ISR & ADC_ISR_OVR) !=0 ) && ((ADC1->IER & ADC_IER_OVRIE) != 0)) 
-	{		
-		SET_BIT(ADC1->ISR,ADC_ISR_OVR);  // OVR Flag cleared by writing 1 	
-		return;
-	}
-
 	if( ((ADC1->ISR & ADC_ISR_EOC) !=0) && (ADC1->IER & ADC_IER_EOCIE) != 0 )
 	{
 		adc_result[adc_index++] = ADC1->DR;
@@ -167,3 +151,28 @@ void ADC1_IRQHandler()
 		SET_BIT(ADC1->ISR,ADC_ISR_EOC); // EOC Flag cleared by writing 1 	
 	}
 }
+
+
+
+/*
+void ADC1_IRQHandler()
+{
+	HAL_ADC_IRQHandler(&AdcHandle);
+}
+*/
+
+/*
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	if( __HAL_ADC_GET_FLAG(hadc, ADC_FLAG_EOC))	
+	{
+		adc_result[adc_index++] = HAL_ADC_GetValue(hadc);
+			
+		if( __HAL_ADC_GET_FLAG(hadc, ADC_FLAG_EOS))	
+		{
+	 		adc_index = 0;	
+		}		
+			
+	 }	
+}
+*/
