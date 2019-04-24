@@ -36,13 +36,24 @@ int main(void)
 
 
   /* Infinite loop */
-  while (1)
-  {		
-			user_led_set();					
-			HAL_Delay(1000);
-			user_led_reset();		
-		    HAL_Delay(1000);
-  }
+	while (1)
+	{
+		user_led_set();
+		HAL_Delay(1000);
+		user_led_reset();
+		HAL_Delay(1000)
+
+		switch (key) {
+			case value:
+
+				break;
+			default:
+				break;
+		};
+		printf("coskun");
+
+
+	}
 }
 
 /**

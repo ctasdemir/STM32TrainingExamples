@@ -43,6 +43,8 @@ int main(void)
 	 size = sprintf(string,"%d %d %d\n",raw_x,raw_y,raw_z);
    UART_send_string(string,size);
 	 */
+		
+		
 		size = sprintf(string,"%f %f %f\n",x,y,z);
     UART_send_byte_array(string,size);
 		HAL_Delay(100);
