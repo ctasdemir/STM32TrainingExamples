@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 13 resources" deleteContents="false" description="Delete 13 resources" element1="/ADC_Single_Conv" element10="/Timer_Servo_Control" element11="/UART_Driver" element12="/UART_Driver_LED" element13="/UART_Driver_Sinus" element2="/ADC_Single_Conv_Int" element3="/ADXL345" element4="/Atollic" element5="/EXTI_Example" element6="/LED_Button_Driver" element7="/LED_Driver" element8="/Timer_Periodic_Signal" element9="/Timer_PWM_Output" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="13" stamp="1693075179268"/>
+</session>

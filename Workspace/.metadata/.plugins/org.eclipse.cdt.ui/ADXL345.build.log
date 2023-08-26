@@ -1,0 +1,32 @@
+20:58:46 **** Incremental Build of configuration Debug for project ADXL345 ****
+make -j8 all 
+arm-none-eabi-gcc -c "D:/test/STM32TrainingExamples/8 - I2C - ADXL345/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F070xB -c -I../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../../../../../Drivers/CMSIS/Include -I../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../../../../Inc -I../../../../../Drivers/user_drivers/Inc -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Application/User/main.d" -MT"Application/User/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Application/User/main.o"
+D:/test/STM32TrainingExamples/8 - I2C - ADXL345/Src/main.c: In function 'main':
+D:/test/STM32TrainingExamples/8 - I2C - ADXL345/Src/main.c:46:24: warning: pointer targets in passing argument 1 of 'UART_send_byte_array' differ in signedness [-Wpointer-sign]
+   46 |   UART_send_byte_array(string, size);
+      |                        ^~~~~~
+      |                        |
+      |                        char *
+In file included from D:/test/STM32TrainingExamples/8 - I2C - ADXL345/Src/main.c:3:
+../../../../../Drivers/user_drivers/Inc/uart_driver.h:27:36: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   27 | void UART_send_byte_array(uint8_t* buffer, uint32_t size);
+      |                           ~~~~~~~~~^~~~~~
+arm-none-eabi-gcc -o "ADXL345.elf" @"objects.list"   -mcpu=cortex-m0 -T"../STM32F070RB_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADXL345.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADXL345.elf
+ 
+arm-none-eabi-size   ADXL345.elf 
+arm-none-eabi-objdump -h -S  ADXL345.elf  > "ADXL345.list"
+arm-none-eabi-objcopy  -O binary  ADXL345.elf  "ADXL345.bin"
+   text	   data	    bss	    dec	    hex	filename
+  10436	    112	   3936	  14484	   3894	ADXL345.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADXL345.bin
+ 
+Finished building: ADXL345.list
+ 
+arm-none-eabi-objcopy.exe -O ihex "ADXL345.elf" "ADXL345.hex"
+ 
+
+20:58:48 Build Finished. 0 errors, 1 warnings. (took 1s.282ms)
+

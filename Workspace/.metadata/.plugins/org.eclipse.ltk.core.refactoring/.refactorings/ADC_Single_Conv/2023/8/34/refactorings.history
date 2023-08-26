@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ADC_Single_Conv/Application/TrueSTUDIO&apos; to &apos;System&apos;" description="Rename resource &apos;TrueSTUDIO&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Application/TrueSTUDIO" name="System" stamp="1693075550402" updateReferences="true"/>
+</session>

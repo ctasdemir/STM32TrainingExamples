@@ -67,8 +67,9 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.cdt.core.cnature</nature>
-		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>com.st.stm32cube.ide.mcu.MCUTSConvertedProjectNature</nature>
 	</natures>
 	<linkedResources>
 		<link>
@@ -82,7 +83,7 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Application/TrueSTUDIO</name>
+			<name>Application/System</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -97,12 +98,12 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Application/TrueSTUDIO/startup_stm32f070xb.s</name>
+			<name>Application/System/startup_stm32f070xb.s</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/startup_stm32f070xb.s</locationURI>
 		</link>
 		<link>
-			<name>Application/TrueSTUDIO/syscalls.c</name>
+			<name>Application/System/syscalls.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/syscalls.c</locationURI>
 		</link>
