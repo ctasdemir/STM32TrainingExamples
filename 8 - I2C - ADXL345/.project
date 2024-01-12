@@ -33,12 +33,12 @@
 		<link>
 			<name>Core/Src/adxl345.c</name>
 			<type>1</type>
-			<location>C:/Projects/STM32TrainingExamples/Drivers/user_drivers/Src/adxl345.c</location>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/Drivers/user_drivers/Src/adxl345.c</locationURI>
 		</link>
 		<link>
 			<name>Core/Src/uart_driver.c</name>
 			<type>1</type>
-			<location>C:/Projects/STM32TrainingExamples/Drivers/user_drivers/Src/uart_driver.c</location>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/Drivers/user_drivers/Src/uart_driver.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

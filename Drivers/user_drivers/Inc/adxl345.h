@@ -7,16 +7,6 @@
 /* I2C address of the device */
 #define ADXL345_ADDRESS		( 0x53<<1)
 
-/* I2C TIMING is calculated in case of the I2C Clock source is the SYSCLK = 48 MHz */
-/* This example use TIMING to 0x00901A4E to reach 400 Khz speed (Rise time = 100 ns, Fall time = 100 ns) */
-#define I2C_TIMING      0x00901A4E
-
-
-
-/* SPI commands */
-#define ADXL345_SPI_READ        (1 << 7)
-#define ADXL345_SPI_WRITE       (0 << 7)
-#define ADXL345_SPI_MB          (1 << 6)
 
 /* ADXL345 Register Map */
 #define	ADXL345_DEVID           0x00 // R   Device ID.
@@ -30,8 +20,7 @@
 #define ADXL345_THRESH_ACT      0x24 // R/W Activity threshold.
 #define ADXL345_THRESH_INACT    0x25 // R/W Inactivity threshold.
 #define ADXL345_TIME_INACT      0x26 // R/W Inactivity time.
-#define ADXL345_ACT_INACT_CTL   0x27 // R/W Axis enable control for activity
-// and inactivity detection.
+#define ADXL345_ACT_INACT_CTL   0x27 // R/W Axis enable control for activity / inactivity detection
 #define ADXL345_THRESH_FF       0x28 // R/W Free-fall threshold.
 #define ADXL345_TIME_FF         0x29 // R/W Free-fall time.
 #define ADXL345_TAP_AXES        0x2A // R/W Axis control for tap/double tap.
@@ -132,6 +121,8 @@
 /* ADXL345 Full Resolution Scale Factor */
 #define ADXL345_SCALE_FACTOR    0.0039
 
+#define ADXL_ERROR (-1)
+#define ADXL_OK (0)
 
 
 int32_t adxl345_init(void);

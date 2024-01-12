@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include "adxl345.h"
 #include "uart_driver.h"
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,7 +50,7 @@ UART_HandleTypeDef huart2;
 
 float x,y,z;
 int16_t raw_x,raw_y, raw_z;
-char string[50];
+uint8_t string[50];
 uint32_t size = 0;
 
 /* USER CODE END PV */
@@ -112,7 +113,7 @@ int main(void)
    size = sprintf(string,"%d %d %d\n",raw_x,raw_y,raw_z);
    UART_send_string(string,size);
    */
-  size = sprintf(string, "%f %f %f\n", x, y, z);
+  size = sprintf((char*)string, "%f %f %f\n", x, y, z);
   UART_send_byte_array(string, size);
   HAL_Delay(100);
   	}
